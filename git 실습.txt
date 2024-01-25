@@ -1,0 +1,101 @@
+<git 실습>
+
+연습 파일 .gitignore로 만들고 업로드 안되게 하기.
+.yaml도 연습용 파일로 만들기 좋다.
+
+
+SQL 힘쓰기!
+
+<초기 setting>>
+1. git init
+2. git config --list 에서 init.defaultbranch=master 인가 확인
+3. 새로만든 repository 주소록 복사후 연결하기 → git remote add origin (repository 주소)
+4. 
+
+<git 파일 추가하기>
+1. git add . 
+2. git status (파일 상태 확인)
+3. git commit -m "commit message" (올리기)
+4. git log (커밋 히스토리 확인) 
+5. git diff (변경사항 내용 확인)
+
+<git 이전 파일로 돌아가기>
+1. reset  → 보통 혼자 작업하는 경우 사용.
+
+* 추가 기능
+: hard, soft, mixed
+- hard : 커밋 기록마저 모두 삭제
+- soft : 커밋 기록은 남겨두고  파일 돌리기
+- mixed : 기록도 남겼지만 다시 add 명령하고 commit해야함.
+
+2. revert
+: 파일의 내용만 변경되지 파일 자체가 삭제되진 않음.
+
+revert commit 제목
+
+(오류 뜰 경우)
+1. git reset : reverting 취소 (다른 파일 삭제 해도 되느지 안된는지 확인 필요☆)
+2. 오류 파일 삭제 후 , git add . → git revert --continue
+
+<branch 이용하기>
+1. git branch (원하는 branch 이름)
+2. git switch (만든 branch 이름) 
+→ branch로 바뀌고 main의 여태까지 기록 가져옴. 이후 여기서 변경사항 생겨도 main에 영향을 주지 않음!
+
+- 삭제하기
+: git branch -D (삭제할 branch 이름)
+
+- branch명 변경하기
+: git branch -m (원래 이름) (바꾸고 싶은 이름)
+
+<merge와 rebase>
+1. merge 
+: branch의 이력을 유지한채 main branch에 합치는 기능이다. branch의 이력을 확인할 수 있어 변경 내용이나 주로 협업시 merge 방식을 사용한다.
+- Merge를 진행하기 위해서는 main branch로 이동 후 진행해야 합니다.
+- merge는 reset으로 되돌리기 가능하다.
+
+2. rebase
+: branch의 이력을 main branch와 연결지어 하나의 이력으로 만들어 줌. 기존 branch 이력이 사라지므로 깨끗한 이력을 관리하기에 용이하다. 단, 하나의 이력으로 만드는 과정에서 모든 커밋을 재정렬 되고 기존 로그의 해시값이 변경되어 충돌 등의 다양한 문제를 만들어 낼 수 있다.
+- Rebase는 merge와는 다르게 합치고 싶은 브랜치에서 Rebase를 진행 후 main에서 merge를 진행해야 합니다.
+- 이때, main의 head는 main에서 커밋된 마지막 위치에 있기 때문 merge를 이용해 합친 branch와 다시 한번 합치는 과정을 진행해야 합니다.
+
+merge나 rebase를 하고 확인 메세지가 나오면 shift + ;를 입력한뒤 wq입력후 enter하면 원래 코드 칠 수 있는 창으로 나갈 수 있다.
+
+<충돌 해결하기>
+main branch와 다른 branch들 각각에서 같은 부분에 대한 변경 내용이 다를경우 충돌이 발생하게 되는데 이를 해결하는 방법을 다룰 예정이다.
+
+1. merge conflict
+: 각 병합시 충돌되는 부분을 보여주고 main에 있는 (current) 값을 사용할 예정인지 다른 branch인 (recent)값을 사용할 예정인지 결정할 수 있게 해준다. 원하는 값으로 선택하고
+git add . → git commit -a로 하면 merging(main|MERGING)이 종료된다.
+
+2. rebase conflict
+: merge 충돌과 동일하게 진행하고 원하는 변경 이력을 선택한 후
+git add . → git rebase --continue 으로 진행. (또 충돌이 생긴다면 해당 과정 반복)
+그리고 main branch로 이동 후 해당 branch를 main branch로  merge하면 끝!
+
+<github에 push>
+1. git remote add origin (repository 주소)
+2. git remote, git remote -v로 등록 확인
+3. git push -u origin main로 github에 올리기
+
+
+<git에서 프로젝트 생성>
+1. 새로운 repository 생성후
+2. 아무 파일 만들고 push후
+3. github에서 멤버 초대 
+4. create a new project 실행(board type )
+5. setting에서 private 으로 할지 public으로 할지 결정
+6. board에서 todo에 티켓 만들기 (+ add item) → 일 생길때마다
+
+<프로젝트 내려받기>
+1. git clone 프로젝트 주소
+2.  cd 프로젝트명
+(change directory)
+3. git fetch origin
+4. git switch 내 branch
+5. 작업 진행
+6. git add . → git status (확인) → git commit -m "작업 및 변경 내용"
+7. git push (github에 올리기)
+8. github에서 pull requests 로 올리기 (작업에 해당하는 티켓 #번호 & 내용 작성 필수)
+9. 간단하게 merge할 수도 있고 다른 작업 사항에 대해 review 남길 수 있음.
+(초록색 표시에서 보라색 표시_merged로 변경)

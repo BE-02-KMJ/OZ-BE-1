@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>멀리뛰기 성적표🏃🏻</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        html, body{
+            margin: 0;
+        }
+        #container{
+            padding: 10px;
+        }
+        table{
+            border: 1px solid #000000;
+            width: 350px;
+            font-size: 20px;
+            text-align: center;
+        }
+        th, td{
+            border: 1px solid #000000;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1><<떡잎 유치원 멀리뛰기 결과>></h1>
+        <table id="score">
+            <tr>
+                <th scope="col">이름</th>
+                <th scope="col">점수</th>
+            </tr>
+            <tr>
+                <td class="name">짱구</td>
+                <td class="score">45</td>
+            </tr>
+            <tr>
+                <td class="name">맹구</td>
+                <td class="score">75</td>
+            </tr>
+            <tr>
+                <td class="name">철수</td>
+                <td class="score">95</td>
+            </tr>
+            <tr>
+                <td class="name">훈이</td>
+                <td class="score">50</td>
+            </tr>
+            <tr>
+                <td class="name">유리</td>
+                <td class="score">68</td>
+            </tr>
+            <tr>
+                <td class="name">수지</td>
+                <td class="score">86</td>
+            </tr>
+        </table>
+        <hr>
+        <h2>[75점이 넘는 학생]</h2>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        // 테이블에서 점수 추출
+        const table = document.getElementById('score');
+        const rows = table.querySelectorAll('tr');
+        const dataRows = Array.from(rows).slice(1);
+        const result = document.getElementById('result');
+
+        // 75점 자료만 추출
+        const filteredRows = [];
+        for (const row of dataRows) {
+            const score = parseInt(row.querySelector('.score').textContent);
+            if (score > 75) {
+                filteredRows.push(row);
+            }
+        }
+
+        // 점수 높은 순 정렬
+        const sortedRows = filteredRows.sort((a, b) => {
+            const scoreA = parseInt(a.querySelector('.score').textContent);
+            const scoreB = parseInt(b.querySelector('.score').textContent);
+            return scoreB - scoreA;
+        });
+
+        // 결과 나열
+        sortedRows.forEach(function(row) {
+            const name = row.querySelector('.name').textContent;
+            const score = row.querySelector('.score').textContent;
+            result.innerHTML += `${name} `;
+        });
+    </script>
+</body>
+</html>

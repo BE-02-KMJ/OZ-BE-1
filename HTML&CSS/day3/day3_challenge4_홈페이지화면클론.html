@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="origin-trial" content="ApvK67ociHgr2egd6c2ZjrfPuRs8BHcvSggogIOPQNH7GJ3cVlyJ1NOq/COCdj0+zxskqHt9HgLLETc8qqD+vwsAAABteyJvcmlnaW4iOiJodHRwczovL3lvdXR1YmUuY29tOjQ0MyIsImZlYXR1cmUiOiJQcml2YWN5U2FuZGJveEFkc0FQSXMiLCJleHBpcnkiOjE2OTUxNjc5OTksImlzU3ViZG9tYWluIjp0cnVlfQ==">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="YouTube에서 마음에 드는 동영상과 음악을 감상하고, 직접 만든 콘텐츠를 업로드하여 친구, 가족뿐 아니라 전 세계 사람들과 콘텐츠를 공유할 수 있습니다.">
+    <meta name="keywords" content="동영상, 공유, 카메라폰, 동영상폰, 무료, 올리기">
+    <title>YouTube</title>
+    <link href="day3_challenge4_youtube.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;family=YouTube+Sans:wght@300..900&amp;display=swap" nonce="_cOUX70eUJX-Bc6wzSZpwQ" class="css-httpsfontsgoogleapiscomcss2familyRobotowght300400500700familyYouTubeSanswght300900displayswap">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300italic,400italic,500italic,700italic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400" rel="stylesheet">
+    <link rel="icon" href="https://www.youtube.com/s/desktop/375de707/img/favicon_48x48.png" sizes="48x48">
+</head>
+<body>
+    <div class="side"> <!--좌측 고정-->
+        <div class="side__menu"> 三 </div>
+        <div class="side__home" title="홈"> 🏠 <br> <span class="side__t">홈</span> </div>
+        <div class="side__shorts" title="Shorts"> 🎞️ <br> <span class="side__t">Shorts</span> </div>
+        <div class="side__sub" title="구독"> 📰 <br> <span class="side__t">구독</span> </div>
+        <div class="side__ytm" title="YouTube Music"> 🎼 <br> <span class="side__t">YouTube Music</span> </div>
+        <div class="side__me" title="나"> 💻 <br> <span class="side__t">나 </span> </div>
+        <div class="side__offline" title="오프라인 저장 동영상"> 💾 <br> <span class="side__t">오프라인 저장 동영상 </span> </div>
+    </div>
+    <div class="head"> <!--상단 고정-->
+        <div class="head__first">
+            <div class="head__logo">
+                <img src="https://blog.kakaocdn.net/dn/7DlZ7/btq45Pgvdmf/PVXefaLbJ1Rg4dp4KDTUQK/img.jpg"
+                alt="YouTube logo" title="YouTube 홈">
+            </div>
+            <div class="head__search">
+                <input type="text" id="search" name="search_bar" class="search_bar" placeholder="검색" title="검색">
+                <input type="submit" id="search_button" name="search_bar" class="search_button" value="🔍" title="검색">
+                <div class="head__speak" title="음성으로 검색">🎙️</div>
+            </div>
+            <div class="head__make" title="만들기">🎥</div>
+            <div class="head__alarm" title="알람">🔔</div>
+            <div class="head__profile">
+                <img src="https://velog.velcdn.com/images/mingming_eee/profile/b78ce6d3-4746-408c-8cbf-71014d71963c/image.jpeg"
+                alt="프로필 사진" title="내 계정" width="40">
+            </div>
+        </div>
+        <div class="head__second">
+            <div class="head__total" title="전체">전체</div>
+            <div class="head__music" title="음악">음악</div>
+            <div class="head__mix" title="믹스">믹스</div>
+            <div class="head__game" title="게임">게임</div>
+            <div class="head__onair" title="실시간">실시간</div>
+            <div class="head__asmr" title="ASMR">ASMR</div>
+            <div class="head__cook" title="요리 프로그램">요리 프로그램</div>
+            <div class="head__rap" title="랩">랩</div>
+            <div class="head__math" title="수학">수학</div>
+            <div class="head__recent" title="최근에 업로드된 동영상">최근에 업로드된 동영상</div>
+            <div class="head__already" title="감상한 동영상">감상한 동영상</div>
+            <div class="head__new" title="새로운 맞춤 동영상">새로운 맞춤 동영상</div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="main__video">
+            <div class="video"> <!--각 비디오별 프로필, 영상 제목, 유저명, 조회수º업로드날-->
+                <img src="https://i.ytimg.com/vi/i7nQ0EPOwhA/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAMgnxF1y8Q6JLU_PHYoFNR8YWq6w"
+                alt="더 밥 스튜디오 라면꼰대5 - 박정민편" class="video__sumnail"> <br>
+                <img src="https://yt3.ggpht.com/h2LcPbyx1Y8LowtWTKNKbc7a_4FV8i2baCP3YjCHp5S5UoBVF1wr4XX03DMn8EjfvtS5yUztuw=s68-c-k-c0x00ffffff-no-rj"
+                alt="더 밥 스튜디오 프로필" class="video__profile">
+                <p class="video__title">"정민아 짜증난 거 아니지..?ㅎㅎ"쫄병 박정민과의 기기괴괴한 겨울 축제로구나.. [라면꼰대5] EP.10</p>
+                <span class="video__user" title="the BOB studio | 더 밥 스튜디오">the BOB studio | 더 밥 스튜디오</span> <br>
+                <span class="video__view">조회수 2.0만회 ･ 2시간 전</span>
+            </div>
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/XSKxJ7BpTyo/hqdefault.jpg?sqp=-oaymwE2COADEI4CSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgBmgSAApYCigIMCAAQARgrIGUoYjAP&rs=AOn4CLAJrUNWVhTUOtQ-h-AdEuTiun_dbA"
+                alt="Mood Rainbow 3 hours Playlist" class="video__sumnail"> <br>
+                <img src="https://yt3.ggpht.com/ytc/AIf8zZRwKczL7-FUi7LJ-WcR2k_u-HhhQa0q_e2yJhEw=s68-c-k-c0x00ffffff-no-rj"
+                alt="Mood Rainbow 프로필" class="video__profile">
+                <p class="video__title">[3 hours Playlist] 미친듯이 할 일 해치우기 |lofi playlist</p>
+                <span class="video__user" title="Mood Rainbow">Mood Rainbow</span> <br>
+                <span class="video__view">조회수 55만회 ･ 1년 전</span>
+            </div>
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/o1B6nWB5Vh4/hq720.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARhlIFsoUjAP&rs=AOn4CLA6QyEKdDP_zAYp-PVbRje7Ri5CMQ"
+                alt="침착맨 원본 박물관 2024-01-05" class="video__sumnail"> <br>
+                <img src="https://yt3.ggpht.com/bwFIQ0k1DdDWLz1tmcMEnNIpCuXHaDmCXZjYEGzv9y4PeaINyf4SKcKBxXDKsnEyXcZL9q7x9gQ=s68-c-k-c0x00ffffff-no-rj"
+                alt="침착맨 원본 박물관 프로필" class="video__profile">
+                <p class="video__title">2024년 01월 05일 | 맥크리스피 디럭스 버거 먹방,침투부 어워즈 2023</p>
+                <span class="video__user" title="침착맨 원본 박물관">침착맨 원본 박물관</span> <br>
+                <span class="video__view">조회수 10만회 ･ 스트리밍 시간: 4일 전</span>
+            </div>
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/fvd66Rs3qSg/hqdefault.jpg?sqp=-oaymwE2COADEI4CSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgBjAKAAuADigIMCAAQARhZIGUoYTAP&rs=AOn4CLCMphktzwB5dkrZ-lgj7xbTy53_Tw"
+                alt="Eat Delliciously With Tui Zuier 먹방" class="video__sumnail"> <br>
+                <img src="https://yt3.ggpht.com/vbOpiQ40gCgwZd6XDF_kT7V4HiBqIWb7mSbFnf9I1-0W1mWioeFR3fHJl74KOjPs-Qz1SeOROg=s68-c-k-c0x00ffffff-no-rj"
+                alt="Eat Delliciously With Tui Zuier 프로필" class="video__profile">
+                <p class="video__title">Every time I watch 1988, I get greedy for this bowl of noodles. Oh my god, it tastes so good. Foodi</p>
+                <span class="video__user" title="Eat Delliciously With Tui Zuier">Eat Delliciously With Tui Zuier</span> <br>
+                <span class="video__view">조회수 47회 ･ 3일 전</span>
+            </div>
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/dNWvpQdiFZ8/hq720.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARhlIF0oRjAP&rs=AOn4CLCEYh9n9_XMOGtU0qcZPUJm2XAIIw"
+                alt="about: 퇴폐미 Playlist" class="video__sumnail"> <br>
+                <img src="https://yt3.ggpht.com/CzTim5zxCNCGpK3LjSE4ric285eKY-c1dZ_WgK2hP7dv75UsCVysbyZqMhErvrzMA92Oj5iz=s68-c-k-c0x00ffffff-no-rj"
+                alt="about: 프로필" class="video__profile">
+                <p class="video__title">[Playlist] 퇴폐미|섹시 알앤비|Sexy R&B Soul Pop</p>
+                <span class="video__user" title="about:">about:</span> <br>
+                <span class="video__view">조회수 32만회 ･ 6개월 전</span>
+            </div>
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/1rZ3HWazmn4/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBGEwoHWhfVYT_oB05Ts32mC8f71A"
+                alt="POPSUGAR Fitness 30-Minute Dance Workout" class="video__sumnail"> <br>
+                <img src="https://yt3.ggpht.com/NNjZzveAS5DEFD72OvfQoqhGQ49SprWThbKouxsE-c5cgU8w4gm3gFoWqGeqCPB7Q0ACYd3G7w=s68-c-k-c0x00ffffff-no-rj"
+                alt="POPSUGAR Fitness 프로필" class="video__profile">
+                <p class="video__title">30-Minute Hip-Hop Tabata Dance Workout</p>
+                <span class="video__user" title="POPSUGAR Fitness">POPSUGAR Fitness</span> <br>
+                <span class="video__view">조회수 48만회 ･ 4개월 전</span>
+            </div>
+        </div>
+        <div class="main__shorts">
+            <div class="shorts__head">
+                <div class="shorts__logo">
+                    <img src="https://image.zdnet.co.kr/2021/03/19/f2b17bde9ce876afa17e9338eead5944.jpg"
+                    alt="YouTube Short logo">
+                </div>
+                <div class="shorts__X">✕</div>
+            </div>
+            <div class="shorts__field">
+                <div class="shorts"> <!--각 쇼츠별 쇼츠 제목, 조회수-->
+                    <img src="https://i.ytimg.com/vi/ZCKPG5X0uHI/oardefault.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB00LYiqkCUDBWOy7laave1CPfbwQ"
+                    alt="Kiss of Life 쥴리 춤선 쇼츠" class="shorts__sumnail"> <br>
+                    <p class="shorts__title">[키스오브라이프/쥴리]쫜~디기 춤선|Nobody Knows</p>
+                    <span class="shorts__view">조회수 32만회</span>
+                </div>
+                <div class="shorts">
+                    <img src="https://i.ytimg.com/vi/Af84PB5pT4M/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCnsuBysXcdsFWlK5o0to1kfMfH4g"
+                    alt="예예 영화 속 지능캐 특징 쇼츠" class="shorts__sumnail"> <br>
+                    <p class="shorts__title">영화 속 지능캐 특징</p>
+                    <span class="shorts__view">조회수 303만회</span>
+                </div>
+                <div class="shorts">
+                    <img src="https://i.ytimg.com/vi/7sTjeYPFh0U/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAlZGm4xI3Bkfg5h0Rt3Ew0_wINbw"
+                    alt="라면 잘 끓이는 방법 쇼츠" class="shorts__sumnail"> <br>
+                    <p class="shorts__title">한국인이 의외로 모르는 한국라면 잘 끓이는 비법 (feat. 백종원 선생님)</p>
+                    <span class="shorts__view">조회수 530만회</span>
+                </div>
+                <div class="shorts">
+                    <img src="https://i.ytimg.com/vi/J8rPvuYuy34/oardefault.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB9x04eGjmqr5VMBuYPzr2z9nAAgg"
+                    alt="피식대학 피식쇼 류준열편 쇼츠" class="shorts__sumnail"> <br>
+                    <p class="shorts__title">류준열에 분노한 차승원</p>
+                    <span class="shorts__view">조회수 47만회</span>
+                </div>
+                <div class="shorts">
+                    <img src="https://i.ytimg.com/vi/SjxMh0CWGBc/oardefault.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD6IFi4NtLNpe6tox6iwB4L-lnM_Q"
+                    alt="반응 엇갈리는 성형 인터뷰 장면 쇼츠" class="shorts__sumnail"> <br>
+                    <p class="shorts__title">반응 엇갈리는 성형 인터뷰 장면</p>
+                    <span class="shorts__view">조회수 26만회</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

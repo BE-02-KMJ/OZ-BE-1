@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    
+    <script>
+        // 배열
+        const blackPink = ["Jennie", "jiso", "rose", "risa"]
+        console.log(blackPink)
+        console.log(blackPink[0])
+        console.log(blackPink[1])
+        console.log(blackPink[2])
+        console.log(blackPink[3])
+        console.log(blackPink[4])
+
+        blackPink[0] = "제니"
+        blackPink[1] = "지수"
+        blackPink[2] = "로제"
+        blackPink[3] = "리사"
+        console.log(blackPink)
+
+        for(let i = 0; i < 4; i ++) {
+            console.log(blackPink[i])
+        }
+
+        // push 메소드
+        blackPink.push("민정")
+        console.log(blackPink)
+
+        // pop 메소드
+        blackPink.pop()
+        console.log(blackPink)
+
+        // indexOf 메소드
+        console.log(blackPink.indexOf("리사"))
+        console.log(blackPink.indexOf("민정"))  // 주어진 요소가 없다면 -1 반환
+
+        // splice 메소드
+        blackPink.splice(1, 2)
+        console.log(blackPink) // 0번에서 부터 2개 제거
+
+        blackPink.splice(0, 2, "risa", "rose", "jiso", "jennie")
+        console.log(blackPink)
+
+        // forEach 메소드
+        blackPink.forEach(function(item){
+            console.log("우리는 Black Pink! 나는 " + item)
+        })
+
+        // length 속성
+        console.log(blackPink.length)
+    </script>
+</body>
+</html>

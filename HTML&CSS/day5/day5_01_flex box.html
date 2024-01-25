@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox 🎁</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0;
+        }
+        ul{
+            display: flex;
+            padding: 0;
+            list-style-type: none;
+            height: 200px;
+
+            flex-direction: row; /* 주축 방향 설정. row가 기본값.*/
+            flex-wrap: nowrap; /* nowrap이 기본값. */
+            
+            justify-content: space-around;
+            align-items: center;
+        }
+        li:nth-child(5){
+            /* align-self: flex-start; */
+            flex-grow: 1;
+        }
+        li{
+            background-color: palevioletred;
+        }
+        li:nth-child(2n-1){
+            background-color: gold;
+        }
+        li:nth-child(3){
+            flex-grow: 2;
+        }
+        li:nth-child(2){
+            flex-shrink: 2;
+        }
+        li:nth-child(6){
+            flex-shrink: 1;
+        }
+        li:nth-child(2n){
+            flex-basis: 50px;
+        }
+        li:nth-child(7)
+        {
+            flex: 1 1 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>밍밍이가 집 앞에서 목격한 동물들</h2>
+    <ul>
+        <li>강아지</li>
+        <li>고양이</li>
+        <li>참새</li>
+        <li>비둘기</li>
+        <li>쥐</li>
+        <li>다람쥐</li>
+        <li>까치</li>
+    </ul>
+</body>
+</html>

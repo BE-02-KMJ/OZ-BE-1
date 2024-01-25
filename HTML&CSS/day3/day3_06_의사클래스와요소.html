@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>의사 클래스 & 의사 요소</title>
+    <style>
+        .menu{
+            padding: 10px;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+        .menu > li{
+            display: inline-block;
+            text-align: center;
+        }
+        li > a{
+            display: inline-block;
+            width: 100px;
+            padding: 10px; /* 콘텐츠 주변 공간 생성 */
+            text-decoration: none;  /* 밑줄 제거 */
+        }
+        /* 의사 클래스 */
+        a:hover{ /* 마우스 올려 놓으면 바뀜. */
+            color: white;
+            background-color: grey;
+        }
+        a:active{ /* 마우스로 클릭하면 바뀜. */
+            color: white;
+            background-color: rgb(0, 39, 39);
+        }
+        li:nth-child(2n-1){
+            font-size: 20px;
+        }
+        /* 의사 요소 */
+        a::first-letter{
+            color: rgb(0, 78, 26);
+            font-weight: 600;
+        }
+        a::after{
+            content: " 보기";
+            color: black;
+        }
+        a::before{
+            content: "Naver ";
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <ul class="menu">
+        <li><a href="#">사전</a></li>
+        <li><a href="#">뉴스</a></li>
+        <li><a href="#">증권</a></li>
+        <li><a href="#">지도</a></li>
+    </ul>
+</body>
+</html>

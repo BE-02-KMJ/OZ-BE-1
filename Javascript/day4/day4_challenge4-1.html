@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위✌🏻 바위✊🏻 보✋🏻 게임</title>
+
+    <style>
+        html{
+            text-align: center;
+        }
+        label{
+            font-size: 20px;
+        }
+        input, button {
+            font-size: 16px;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>가위✌🏻바위✊🏻보✋🏻게임</h1>
+    <label for="userChoice">가위, 바위, 보 중 선택하세요: </label> <br>
+    <input type="text" id="userChoice" placeholder="가위, 바위, 보">
+    <button onclick="playGame()">결과 확인</button>
+    <p id="result"></p>
+
+    <script>
+        function playGame() {
+            // 사용자가 입력한 값 가져오기
+            const userChoice = document.getElementById('userChoice').value.toLowerCase();
+
+            // 입력값이 가위, 바위, 보 중 하나인지 확인
+            if (userChoice !== '가위' && userChoice !== '바위' && userChoice !== '보') {
+                alert('가위, 바위, 보 중 하나를 입력하세요.');
+                return;
+            }
+
+            // 컴퓨터가 가위, 바위, 보 중에서 랜덤으로 선택
+            const choices = ['가위', '바위', '보'];
+            const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+            // 사용자와 컴퓨터의 선택 결과 비교
+            if (userChoice === computerChoice) {
+                displayResult(`당신의 선택: ${userChoice} / 컴퓨터의 선택: ${computerChoice} / 결과: 비겼습니다😗`);
+            } else if (
+                (userChoice === '가위' && computerChoice === '보') ||
+                (userChoice === '바위' && computerChoice === '가위') ||
+                (userChoice === '보' && computerChoice === '바위')
+            ) {
+                displayResult(`당신의 선택: ${userChoice} / 컴퓨터의 선택: ${computerChoice} / 결과: 이겼습니다!🤩`);
+            } else {
+                displayResult(`당신의 선택: ${userChoice} / 컴퓨터의 선택: ${computerChoice} / 결과: 졌습니다...😢`);
+            }
+
+            // 컴퓨터 랜덤 초기화
+            computerChoice = 0;
+        }
+
+        // 결과 입력
+        function displayResult(result) {
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = result;
+        }
+    </script>
+</body>
+</html>

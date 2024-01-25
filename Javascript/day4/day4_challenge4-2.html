@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>랜덤 이미지: 당신의 운세는?🔮</title>
+
+    <style>
+        html{
+            text-align: center;
+            margin: 0;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            width: 100%;
+            height: 700px;
+        }
+    </style>
+</head>
+<body>
+    <h1>2024년 당신의 운세는?</h1>
+    <img id="imageDisplay" src="" alt="랜덤 이미지">
+    <button onclick="stopAnimation()">멈춰</button>
+
+    <script>
+        // 랜덤 이미지 주소 배열
+        const images = [
+            'https://mblogthumb-phinf.pstatic.net/20150708_90/vysegirlv_1436362827710YGFB1_JPEG/20141231_163452_-1163980676.jpg?type=w420',
+            'https://blog.kakaocdn.net/dn/cttWvZ/btqCy46itSa/N5CgflOhkT8D7DpD0muDU1/img.jpg',
+            'https://mblogthumb-phinf.pstatic.net/MjAxODExMjdfMjc5/MDAxNTQzMzA1MDIzMzMy.6mOrWM6CZ55N67eyT42UGsqUAYEurDmtE-NM2wv2-gQg.pRDBrb11w97IakgtflwncDv9s8WPTfQTwdHLcmdu5k0g.JPEG.ondo_h/image_4321064181543304958582.jpg?type=w800',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsgpJ6GNdXR8ygPFbS_Urg-8NPR_aiVNeuXQ&usqp=CAU',
+            'https://s3.ap-northeast-2.amazonaws.com/univ-careet/FileData/Article/674/a1a1d3b9-9f08-4200-94d7-c6515270e0d2.png',
+            'https://i.pinimg.com/736x/c3/6c/18/c36c18fb13d81fbc4dc45aa66c47af86.jpg',
+            'https://file.okky.kr/images/1689918283822.png',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH1baslixQDsUxEmPSBtqtqD6pWuB2EMDzCg&usqp=CAU',
+            'https://blog.kakaocdn.net/dn/qM9y8/btqU92Jmx90/DWzhLUYbCiz7PldqnIB1gK/img.jpg'
+        ];
+
+        let animationInterval;
+
+        function startAnimation() {
+            animationInterval = setInterval(() => {
+                const randomIndex = Math.floor(Math.random() * images.length);
+                const imageUrl = images[randomIndex];
+                document.getElementById('imageDisplay').src = imageUrl;
+            }, 200);
+        }
+
+        function stopAnimation() {
+            clearInterval(animationInterval);
+        }
+
+        // 페이지 로딩 시 바로 랜덤 이미지로 시작
+        startAnimation();
+    </script>
+</body>
+</html>

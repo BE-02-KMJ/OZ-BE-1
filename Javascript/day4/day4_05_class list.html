@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class List</title>
+    <style>
+        .handsome{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://newsimg.hankookilbo.com/cms/articlerelease/2021/01/08/445afd91-df8f-4461-b1d1-07814762be82.jpg" alt="배우 송강 사진">
+    <br>
+    <button id="add">ADD STYLE</button>
+    <button id="remove">REMOVE STYLE</button>
+    <button id="toggle">TOGGLE STYLE</button>
+
+    <script>
+        const img = document.querySelector("img")
+        const addBtn = document.querySelector("#add")
+        const removeBtn = document.querySelector("#remove")
+        const toggleBtn = document.querySelector("#toggle")
+
+        console.log(img.classList)
+
+        addBtn.addEventListener("click", function(){
+            img.classList.add("handsome")
+            console.log(img.classList.contains("handsome"))
+        })
+        removeBtn.addEventListener("click", function(){
+            img.classList.remove("handsome")
+            console.log(img.classList.contains("handsome"))
+        })
+        toggleBtn.addEventListener("click", function(){
+            img.classList.toggle("handsome")
+            console.log(img.classList.contains("handsome"))
+        })
+
+    </script>
+</body>
+</html>

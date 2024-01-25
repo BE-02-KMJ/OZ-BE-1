@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⏱️Stop Watch⏱️</title>
+    <style>
+        html{
+            position: relative;
+            top: calc(100vh / 3);
+            background-color: beige;
+        }
+        body{
+            text-align: center;
+        }
+        #title{
+            font-weight: 900;
+            font-size: 30px;
+        }
+        div{
+            height: 50px;
+        }
+        #time{
+            position: relative;
+            top: 10px;
+        }
+        button {
+            width: 50px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="title">⏰스톱워치⏰</div>
+        <div id="time">경과시간 00:00:00:00</div>
+        <div id="buttons">
+          <button id="start">start</button>
+          <button id="stop">stop</button>
+          <button id="reset">reset</button>
+        </div>
+    </div>
+
+    <script src="day3_challenge4-4.js"></script>
+</body>
+</html>

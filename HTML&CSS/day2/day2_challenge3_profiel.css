@@ -1,0 +1,40 @@
+*{
+    text-align: center;
+    font-family: 'Nanum Myeongjo', serif;
+}
+
+html{
+    background-color: #FFDBFC;
+    font-size: 16px;
+}
+
+body{
+    width: 640px;
+    margin: auto; /* 너비에서 남는 여백을 양쪽에 동일하게 분배한다. */
+}
+
+h1{
+    font-size: 48px;
+}
+
+img{
+    width: 250px;
+    border-radius: 50px 0px 50px 0px;
+}
+
+p{
+    font-size: 1.2rem;
+
+}
+
+h2{
+    font-weight: 700;
+}
+
+#strong{
+    color: darkviolet;
+}
+
+#mark{
+    background-color: aqua;
+}

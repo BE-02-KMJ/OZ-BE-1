@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown⏱️</title>
+    <style>
+        #container{
+            font-weight: 900;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script>
+    setInterval(function () {
+        let now = new Date();
+        let time = document.getElementById("container");
+        time.textContent = `현재 시간: ${now}`;
+    });
+    </script>
+</body>
+</html>

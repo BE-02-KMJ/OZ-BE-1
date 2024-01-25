@@ -1,0 +1,850 @@
+Delivered-To: mjk6984@gmail.com
+Received: by 2002:a05:612c:2c0c:b0:43d:5f02:1094 with SMTP id ir12csp2043441vqb;
+        Tue, 16 Jan 2024 23:13:47 -0800 (PST)
+X-Received: by 2002:a81:a704:0:b0:5fb:af10:ef96 with SMTP id e4-20020a81a704000000b005fbaf10ef96mr6867795ywh.56.1705475627601;
+        Tue, 16 Jan 2024 23:13:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705475627; cv=none;
+        d=google.com; s=arc-20160816;
+        b=LrbmQxAVcrLXHnGwzAJidrRUjFNAR2UOCU/NlNe+5UfFzwW8V+e67ImLBxf10EeEoT
+         Rlvg+2QjS+iku6TgM9o8+3pOYKjvkKVbDwUtSNnXIt8eO1zb9Q7sYs1+FcXNZS4GAEml
+         gsmBLm0v/d7V9qeNt+LBGJAOGnX/PwlnjmDw6YTowgPBw2KmvSh6WLFPHXZ8RgcAdQkn
+         6h0XpAJrmfJsJUsVgrhigwYThSPGbl2O96PE6Sha6NOfPtVG+z3K7utgG4wiObYTMEfQ
+         orim6AM4UU5JHQXg2XN0rSRi7h3Qc4Xg4agtTCRKVa1ocMB/YJDMbgWNOgM8kzU88Vmd
+         htQA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:date:message-id:feedback-id:mime-version
+         :dkim-signature;
+        bh=GhdT5Z5OarPh+14IHr622PJc0as/xHYLpvOdg/AvTZk=;
+        fh=PVmaSoCjVN3ymHfsAYTNV4AWIbp+fff39UPO+oVvgpw=;
+        b=cVn8kODoj72w5RWjZU35xlJIjGdvbBgfML9++xmT2pgngTOdF3IRq6tNhnQ5R7ZM1w
+         V+yBt6tZVZbPWWi6YNveMSBt/AldDyDfhXw/7n+w1tvDGMVJigKnRTaVwICQhRx4wJ7h
+         xdLywZ87oP/8MFGf1zrvPdNAgMG/qvPB45caTTgVQwCtkmyFsyskLa694l+r4EmpqemW
+         1oVgiKZRE+NP9ofR4ESYkU7gNkwVkszmbzYFH19FSM5RXae2J4VcUlZSr3f9dLZARN3C
+         15PaRX573YFhTeaS+7+1ChYcRzqljl6NV5ZibX27cGRlsQc0yXP5b3uzPGV467YbCt1q
+         44Yw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=hgRydyQC;
+       spf=pass (google.com: domain of 3k36nzrykb_gktwrx-wjhjnuyx-stwjuq3lttlqj.htrropbed9lrfnq.htr@trix.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3K36nZRYKB_gktwrx-wjhjnuyx-stwjuq3lttlqj.htrropBED9lrfnq.htr@trix.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <3K36nZRYKB_gktwrx-wjhjnuyx-stwjuq3lttlqj.htrropBED9lrfnq.htr@trix.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id u16-20020a0deb10000000b005ff6589fb07sor511175ywe.18.2024.01.16.23.13.47
+        for <mjk6984@gmail.com>
+        (Google Transport Security);
+        Tue, 16 Jan 2024 23:13:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3k36nzrykb_gktwrx-wjhjnuyx-stwjuq3lttlqj.htrropbed9lrfnq.htr@trix.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=hgRydyQC;
+       spf=pass (google.com: domain of 3k36nzrykb_gktwrx-wjhjnuyx-stwjuq3lttlqj.htrropbed9lrfnq.htr@trix.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3K36nZRYKB_gktwrx-wjhjnuyx-stwjuq3lttlqj.htrropBED9lrfnq.htr@trix.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1705475627; x=1706080427; dara=google.com;
+        h=to:from:subject:date:message-id:feedback-id:mime-version:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=GhdT5Z5OarPh+14IHr622PJc0as/xHYLpvOdg/AvTZk=;
+        b=hgRydyQCuolE3mjD7lxU1jTEzOdp8WiLb2+xHVuvmHvS5w6g+6vRGa1wjmr3rNQfUb
+         dOS2otDkM3ALYTLkfVIeIKzuPBBfwJ0Nvnz4/9+tQAwT5ezEpuTiZelIopT2DhjXDky7
+         jPIwhnY4blIKA8xc4vdBWhN0+Fl2YgCCKts+uzTSFXXo+WfXY6p6h8+wCjm2Uvc0lKS+
+         xWzPBiDr+AoTFw4sCLgQ3SB24SEplk5t5MxGDV9mDK2WZwWKIUTnJGlh15TTUMhVzSo1
+         ir0PdrzrFD7v3sq7TEchkAMprkjFnElBOvHynm/+5aWlE/ovN5Ba84ofAeS+d07ddFZ5
+         MZpQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1705475627; x=1706080427;
+        h=to:from:subject:date:message-id:feedback-id:mime-version
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=GhdT5Z5OarPh+14IHr622PJc0as/xHYLpvOdg/AvTZk=;
+        b=ssr4TJMXffjvCA80UJxk5CQ0OSGHOwJD99j+Qn4efHMPB7Ca2zKPIPUMd3H7KohvRw
+         1HFmJ2rM24MoW6rzEi16dlbAyXtXfpafO+s3KLR99ZWTbqcwCUrx9poq3/lfoXvH2p9I
+         2o9vSXqvbHPtysw0WkDPs7VJ0yI9GRgoZDIDi1d2LJVu2FW9MIUPfRXEByGUbg4GBhMI
+         QpG6kvS7BMP89KlVsEc65NStAMjlwVV1JFmfzoej6p+62OKr69CyeTgZIQ6d11a8ORzK
+         pUJ3l/w0hKypdHop0yPBNkn9Lck6RlwnaqdpnKC1P8TMn3ifmWSHYxOwa6jjbOQw8tEx
+         5Vuw==
+X-Gm-Message-State: AOJu0YzIEo3+JSoV2A5+OsDqcugN+haKv2Sx56eq2mzXXgEvzX0OOitC
+	0P4xSGOJEUAeCUQoVFxIJuJzqSPKSdRee8+gyl8XABO5
+X-Google-Smtp-Source: AGHT+IE9CAX/aMYp4RfrGTK+JmtmykdyBHUjZAWEW6TU2nFEKe0z983/yZxTMHuil7l77lCudnLMLHgVKY4xBHrnk8Lm4A==
+MIME-Version: 1.0
+X-Received: by 2002:a81:b14a:0:b0:5d9:1524:e315 with SMTP id
+ p71-20020a81b14a000000b005d91524e315mr6284267ywh.17.1705475627181; Tue, 16
+ Jan 2024 23:13:47 -0800 (PST)
+Feedback-ID: MailTypeResponseReceipt:GoogleForms
+X-GoogleForms-FormId: e/1FAIpQLSc4FAKP3CxH0UZQUsTXwvkjyG7Yk-grnw_5QhBvAeOCqKYi_g
+X-GoogleForms-CustomerDisplayName: =?UTF-8?B?SnLsvZTrlKnsl7Dqtazshow=?=
+Message-ID: <autogen-java-8d8b3a78-aa2b-4bde-8db0-c4afeb94ac19@google.com>
+Date: Wed, 17 Jan 2024 07:13:47 +0000
+Subject: =?UTF-8?B?8J+TkyBEYXk0LSBKUyDrrLjsoJwg7ZKA6riw?=
+From: Google Forms <forms-receipts-noreply@google.com>
+To: mjk6984@gmail.com
+Content-Type: multipart/alternative; boundary="000000000000ee7351060f1efc2f"
+
+--000000000000ee7351060f1efc2f
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+R29vZ2xlIEZvcm1zDQoNCg0K8J+TkyBEYXk0LSBKUyDrrLjsoJwg7ZKA6riw7J2EKOulvCkg7J6R
+7ISx7ZW0IOyjvOyFlOyEnCDqsJDsgqztlanri4jri6QuDQrsiJjsi6DtlZwg64K07Jqp7J2AIOuL
+pOydjOqzvCDqsJnsirXri4jri6QNCg0KDQrwn5OTIERheTQtIEpTIOusuOygnCDtkoDquLANCg0K
+DQrsnbTrqZTsnbwgKg0KDQoNCm1qazY5ODRAZ21haWwuY29tDQoNCg0K7J2066aE7J2EIOyekeyE
+se2VtCDso7zshLjsmpQuDQoqDQoNCg0K6rmA66+87KCVDQoNCg0KMS4g7J6Q67CU7Iqk7YGs66a9
+7Yq47JeQ7IScIOqwneyytOulvCDsg53shLHtlaAg65WMIOyjvOuhnCDsgqzsmqnrkJjripQg7IOd
+7ISx7J6QIO2VqOyImOuKlCAgDQrrrLTsl4fsnbjqsIDsmpQ/ICoNCg0KDQoxLiBjcmVhdGUoKQ0K
+DQoNCjIuIG5ld09iamVjdCgpDQoNCg0KMy4gY29uc3RydWN0b3IoKQ0KDQoNCjQuIE9iamVjdCgp
+DQoNCg0KMi4g7J6Q67CU7Iqk7YGs66a97Yq4IOyDneyEseyekCDtlajsiJjsl5DshJwgdGhpcyDt
+gqTsm4zrk5zripQg66y07JeH7J2EIOqwgOumrO2CpOuCmOyalD8gKg0KDQoNCjEuIOqwneyytCDs
+npDssrTrpbwg6rCA66as7YK0DQoNCg0KMi4g7IOd7ISx7J6QIO2VqOyImOulvCDqsIDrpqztgrQN
+Cg0KDQozLiDsoITsl60g6rCd7LK066W8IOqwgOumrO2CtA0KDQoNCjQuIOyduOyKpO2EtOyKpOul
+vCDqsIDrpqztgrQNCg0KDQozLiDsnpDrsJTsiqTtgazrpr3tirgg7IOd7ISx7J6QIO2VqOyImOyX
+kOyEnCDsgqzsmqnrkJjripQg7ZSE66Gc7Y287Yuw7JmAIOuplOyEnOuTnOulvCDsoJXsnZjtlaAg
+65WMLCAgDQrslrTrlqQg7YKk7JuM65Oc66W8IOyCrOyaqe2VmOuCmOyalD8gKg0KDQoNCjEuIGRl
+ZmluZQ0KDQoNCjIuIHNldA0KDQoNCjMuIHRoaXMNCg0KDQo0LiBwcm90b3R5cGUNCg0KDQo0LiDs
+npDrsJTsiqTtgazrpr3tirgg7IOd7ISx7J6QIO2VqOyImOyXkOyEnCDsgqzsmqnrkJjripQg7ZSE
+66Gc7Yag7YOA7J6FKHByb3RvdHlwZSnsnZgg7Jet7ZWg7J2AICANCuustOyXh+yduOqwgOyalD8g
+Kg0KDQoNCnByb3RvdHlwZSBsaW5r7JmAIGNvbnN0cnVjdG9y656AIO2KueyEseydhCDqsIDsp4Dq
+s6Ag7J6I64qU642wIOyekOyLoOydtCDrp4zrk6TslrTrgrgg6rCd7LK07J2YICANCuybkO2Yleyd
+hCDssLjsobDtlZjripQg7Jet7ZWg6rO8IOygleydmOuQnCDtlajsiJjqsIAg7IOd7ISx7J6Q6rCA
+IOuQoCDsiJgg7J6I64qUIOyekOqyqeydhCDrtoDsl6ztlZzri6TripQgIA0K7J2Y66+47J2064uk
+LiDspoksIOyDneyEseyekOydmCDsnpDqsqnsnYQg6rCW7LaU6rKMIO2VtOyjvOuKlCDsl63tlaDs
+nbTri6QuDQoNCg0KNS4g7J6Q67CU7Iqk7YGs66a97Yq47JeQ7IScIOu5jO2KuOyduCDsg53shLHs
+npDrnoAg66y07JeH7J246rCA7JqUPyDsmIjrpbwg65Ok7Ja0IOyEpOuqhe2VtOuztOyEuOyalC4g
+Kg0KDQoNCuyekOuwlOyKpO2BrOumve2KuOyXkCDrgrTsnqXrkJwg7IOd7ISx7J6Q66GcIOydtOul
+vCDsnbTsmqntlbQg6rCd7LK066W8IOyDneyEse2VoCDsiJgg7J6I64ukLiDsmIjrpbwg65Ok66m0
+ICANCkRhdGXrnbzripQg64Kg7Kec7JmAIOyLnOqwhOydhCDsspjrpqztlZjripQg67mM7Yq47J24
+IOyDneyEseyekOqwgCDsnojri6QuDQoNCg0KNi4g7J6Q67CU7Iqk7YGs66a97Yq47J2YIOu5jO2K
+uOyduCDsg53shLHsnpAg7KSRIOuwsOyXtOydhCDsg53shLHtlZjripQg7IOd7ISx7J6Q64qUIOus
+tOyXh+yduOqwgOyalD8gKg0KDQoNCjEuIE9iamVjdA0KDQoNCjIuIEFycmF5DQoNCg0KMy4gRnVu
+Y3Rpb24NCg0KDQo0LiBTdHJpbmcNCg0KDQo3LiDsnpDrsJTsiqTtgazrpr3tirjsnZgg67mM7Yq4
+7J24IOyDneyEseyekCDspJEg64Kg7Kec7JmAIOyLnOqwhOydhCDri6Tro6jripQg7IOd7ISx7J6Q
+64qUIOustOyXh+yduOqwgOyalD8NCioNCg0KDQoxLiBEYXRlDQoNCg0KMi4gTnVtYmVyDQoNCg0K
+My4gUmVnRXhwDQoNCg0KNC4gQm9vbGVhbg0KDQoNCjguIEphdmFTY3JpcHTsl5DshJwg7KeA7KCV
+65CcIOyLnOqwhCDtm4Tsl5Ag7L2U65Oc66W8IOyLpO2Wie2VmOuKlCDtg4DsnbTrqLgg66mU7IaM
+65Oc64qUICANCuustOyXh+yduOqwgOyalD8gKg0KDQoNCjEuIHNldEludGVydmFsKCkNCg0KDQoy
+LiBzZXRUaW1lb3V0KCkNCg0KDQozLiBjbGVhckludGVydmFsKCkNCg0KDQo0LiBjbGVhclRpbWVv
+dXQoKQ0KDQoNCjkuIHNldFRpbWVvdXQoKSDrqZTshozrk5zsnZgg7LKrIOuyiOynuCDrp6TqsJzr
+s4DsiJjroZwg7KCE64us65CY64qUIOqwkuydgCDrrLTsl4fsnbjqsIDsmpQ/ICoNCg0KDQoxLiDs
+i6TtlontlaAg7ZWo7IiYDQoNCg0KMi4g7KeA7JewIOyLnOqwhCjrsIDrpqzstIgg64uo7JyEKQ0K
+DQoNCjMuIOyduO2EsOuyjCDsi5zqsIQo67CA66as7LSIIOuLqOychCkNCg0KDQo0LiDtg4DsnbTr
+qLggSUQNCg0KDQoxMC4gc2V0SW50ZXJ2YWwoKSDrqZTshozrk5zrpbwg7IKs7Jqp7ZWY7JesIOy9
+lOuTnOulvCDsi6TtlontlZwg7ZuELCDsvZTrk5zrpbwg7KSR7KeA7ZWY6riwIOychO2VtCAgDQrs
+gqzsmqntlZjripQg66mU7IaM65Oc64qUIOustOyXh+yduOqwgOyalD8gKg0KDQoNCjEuIGNsZWFy
+SW50ZXJ2YWwoKQ0KDQoNCjIuIGNsZWFyVGltZW91dCgpDQoNCg0KMy4gc2V0SW50ZXJ2YWwoKQ0K
+DQoNCjQuIHNldFRpbWVvdXQoKQ0KDQoNCjExLiDslYTrnpgg7L2U65Oc66W8IOyLpO2WiSDtlojs
+nYTrlYwgY29uc29sZS5sb2fsl5Ag7Lac66Cl65CY64qUIOqwkuydhCDsnpHshLHtlZjsi5zsmKQu
+DQrri7Xrs4Ag7J6R7ISxIDogYXJyPSAsIG5ld0FycjI9DQoqDQrsuqHshZgg7JeG64qUIOydtOuv
+uOyngA0KDQoNCmFyciA9IFszLCAyLCAxXSwgbmV3QXJyMiA9IFtkXQ0KDQoNCjEyLiDsnpDrsJTs
+iqTtgazrpr3tirjsl5DshJwg7YG0656Y7Iqk66W8IOyEoOyWuO2VmOuKlCDtgqTsm4zrk5zripQg
+66y07JeH7J246rCA7JqUPyAqDQoNCg0KMS4gb2JqZWN0DQoNCg0KMi4gZnVuY3Rpb24NCg0KDQoz
+LiBjbGFzcw0KDQoNCjQuIGxldA0KDQoNCjEzLiDtgbTrnpjsiqTsl5DshJwg7IOd7ISx7J6QIO2V
+qOyImOulvCDsoJXsnZjtlZjripQg67Cp67KV7J2AIOyWtOuWpCDqsoPsnbjqsIDsmpQ/ICoNCg0K
+DQoxLiAuaW5pdCDtlajsiJjrpbwg7IKs7Jqp7ZWY7JesIOygleydmO2VqeuLiOuLpC4NCg0KDQoy
+LiBjb25zdHJ1Y3RvciDtlajsiJjrpbwg7IKs7Jqp7ZWY7JesIOygleydmO2VqeuLiOuLpA0KDQoN
+CjMuIHByb3RvdHlwZSDtlajsiJjrpbwg7IKs7Jqp7ZWY7JesIOygleydmO2VqeuLiOuLpC4NCg0K
+DQo0LiDtgbTrnpjsiqTsl5DshJwg7IOd7ISx7J6QIO2VqOyImOulvCDsoJXsnZjtlaAg7ZWE7JqU
+6rCAIOyXhuyKteuLiOuLpC4NCg0KDQoxNC4g7J6Q67CU7Iqk7YGs66a97Yq4IO2BtOuemOyKpOyX
+kOyEnCDrqZTshJzrk5zrpbwg7LaU6rCA7ZWY64qUIOuwqeuyleydgCDrrLTsl4fsnbjqsIDsmpQ/
+ICoNCg0KDQoxLiDtgbTrnpjsiqTsl5DshJwg66mU7ISc65Oc66W8IOy2lOqwgO2VoCDsiJgg7JeG
+7Iq164uI64ukLg0KDQoNCjIuIO2BtOuemOyKpCDrgrTrtoDsl5Ag66mU7ISc65Oc66W8IOy2lOqw
+gO2VqeuLiOuLpC4NCg0KDQozLiDtgbTrnpjsiqQg7Jm467aA7JeQ7IScIOuplOyEnOuTnOulvCDs
+tpTqsIDtlanri4jri6QuDQoNCg0KNC4g7ZSE66Gc7Yag7YOA7J6F7JeQIOuplOyEnOuTnOulvCDs
+tpTqsIDtlanri4jri6QuDQoNCg0KMTUuIOyekOuwlOyKpO2BrOumve2KuCDtgbTrnpjsiqTsl5Ag
+7IOB7IaN7J2EIOq1rO2YhO2VmOq4sCDsnITtlbQg7IKs7Jqp65CY64qUIO2CpOybjOuTnOuKlCAg
+DQrrrLTsl4fsnbjqsIDsmpQ/ICoNCg0KDQoxLiBpbXBsZW1lbnRzDQoNCg0KMi4gaW5oZXJpdA0K
+DQoNCjMuIGV4dGVuZHMNCg0KDQo0LiBvdmVycmlkZQ0KDQoNCjE2LiDsnpDrsJTsiqTtgazrpr3t
+irjsl5DshJwgTWF0aCDqsJ3ssrTripQg7Ja065akIOyaqeuPhOuhnCDsgqzsmqnrkJjripTqsIDs
+mpQ/ICoNCg0KDQoxLiDsiJjtlZnsoIHsnbgg7Jew7IKw7J2EIOyImO2Wie2VmOq4sCDsnITtlbQg
+7IKs7Jqp65Cp64uI64ukLg0KDQoNCjIuIOusuOyekOyXtCDsspjrpqzrpbwg7JyE7ZW0IOyCrOya
+qeuQqeuLiOuLpC4NCg0KDQozLiDrsLDsl7TsnYQg64uk66Oo6riwIOychO2VtCDsgqzsmqnrkKnr
+i4jri6QuDQoNCg0KNC4g7KGw6rG066y47J2EIOyymOumrO2VmOq4sCDsnITtlbQg7IKs7Jqp65Cp
+64uI64ukLg0KDQoNCuuCmOunjOydmCBHb29nbGUgRm9ybXMg66eM65Ok6riwDQoNCuyVheyaqeyC
+rOuhgCDsi6Dqs6ANCg0KDQo=
+--000000000000ee7351060f1efc2f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head><style nonce=3D"uDtwyTcZYAUHB4QtovDy2w">@import url(https://fon=
+ts.googleapis.com/css?family=3DGoogle+Sans:400,500|Roboto:300,400,400i,500,=
+700&subset=3Dlatin,vietnamese,latin-ext,cyrillic,greek,cyrillic-ext,greek-e=
+xt);</style><style nonce=3D"uDtwyTcZYAUHB4QtovDy2w">[class=3D"x_body-conten=
+t-wrapper"] * {white-space: normal !important;}</style></head><body dir=3D"=
+ltr" style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif=
+;font-size: 14px; font-weight: 400; line-height: 20px;text-align: start; wo=
+rd-wrap: break-word; margin: 0; padding: 0; height: 100%; width: 100%;"><ta=
+ble border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"background-co=
+lor:rgb(103,58,183);" width=3D"100%" role=3D"presentation"><tbody><tr heigh=
+t=3D"64px"><td style=3D"padding: 0 24px;"><img alt=3D"Google Forms" height=
+=3D"26px" style=3D"display: inline-block; margin: 0; vertical-align: middle=
+;" width=3D"143px" src=3D"https://www.gstatic.com/docs/forms/google_forms_l=
+ogo_lockup_white_2x.png"></td></tr></tbody></table><div class=3D"body-conte=
+nt-wrapper" style=3D"padding: 12px; background-color: rgb(237,231,246);"><d=
+iv style=3D"margin: 0 auto; max-width: 640px; min-width: 154px;"><div style=
+=3D"border: 1px solid #dadce0; padding: 20px 12px;background-color: #fff; b=
+order-radius: 8px; margin-bottom: 12px;padding: 20px;"><h1 style=3D"color: =
+#202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 20px; fon=
+t-weight: 400; line-height: 28px;margin: 0 0 12px;"><a href=3D"https://docs=
+.google.com/forms/d/e/1FAIpQLSc4FAKP3CxH0UZQUsTXwvkjyG7Yk-grnw_5QhBvAeOCqKY=
+i_g/viewform?usp=3Dmail_form_link" target=3D"_blank" style=3D"white-space: =
+pre-wrap;">=F0=9F=93=93 Day4- JS =EB=AC=B8=EC=A0=9C =ED=92=80=EA=B8=B0</a>=
+=EC=9D=84(=EB=A5=BC) =EC=9E=91=EC=84=B1=ED=95=B4 =EC=A3=BC=EC=85=94=EC=84=
+=9C =EA=B0=90=EC=82=AC=ED=95=A9=EB=8B=88=EB=8B=A4.</h1>=EC=88=98=EC=8B=A0=
+=ED=95=9C =EB=82=B4=EC=9A=A9=EC=9D=80 =EB=8B=A4=EC=9D=8C=EA=B3=BC =EA=B0=99=
+=EC=8A=B5=EB=8B=88=EB=8B=A4</div><div style=3D"border-bottom: 1px solid #da=
+dce0; border-left: 1px solid #dadce0; border-right: 1px solid #dadce0; bord=
+er-top: 8px solid rgb(103,58,183); padding: 20px;background-color: #fff; bo=
+rder-radius: 8px; margin-bottom: 12px;"><h1 dir=3D"ltr" style=3D"font-famil=
+y: Roboto,Helvetica,Arial,sans-serif;font-size: 32px; font-weight: 400; lin=
+e-height: 42px;white-space: pre-wrap;margin: 0 0 12px;">=F0=9F=93=93 Day4- =
+JS =EB=AC=B8=EC=A0=9C =ED=92=80=EA=B8=B0</h1><div style=3D"white-space: pre=
+-wrap;margin-bottom: 12px;"></div></div><div style=3D"border: 1px solid #da=
+dce0; padding: 20px 12px;background-color: #fff; border-radius: 8px; margin=
+-bottom: 12px;margin-bottom: 12px;"><div style=3D"padding: 0 12px;"><h2 dir=
+=3D"auto" style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-=
+serif;font-size: 16px; font-weight: 400; line-height: 24px;white-space: pre=
+-wrap;margin: 0 0 16px;">=EC=9D=B4=EB=A9=94=EC=9D=BC<span style=3D"color: #=
+d93025;" aria-label=3D"=ED=95=84=EC=88=98 =EC=A7=88=EB=AC=B8"> *</span></h2=
+></div><div style=3D"padding: 0 12px;"><div style=3D"width: 100%;"><div dir=
+=3D"auto" style=3D"white-space: pre-wrap;border-bottom: 1px dotted rgba(0,0=
+,0,0.38);margin: 12px 0 8px; min-height: 20px;display: inline-block; max-wi=
+dth: 100%; min-width: 50%;">mjk6984@gmail.com</div></div></div></div><div s=
+tyle=3D"border: 1px solid #dadce0; padding: 20px 12px;background-color: #ff=
+f; border-radius: 8px; margin-bottom: 12px;margin-bottom: 12px;"><div style=
+=3D"padding: 0 12px;"><h2 dir=3D"auto" style=3D"color: #202124;font-family:=
+ Roboto,Helvetica,Arial,sans-serif;font-size: 16px; font-weight: 400; line-=
+height: 24px;white-space: pre-wrap;margin: 0 0 16px;">=EC=9D=B4=EB=A6=84=EC=
+=9D=84 =EC=9E=91=EC=84=B1=ED=95=B4 =EC=A3=BC=EC=84=B8=EC=9A=94.<br><span st=
+yle=3D"color: #d93025;" aria-label=3D"=ED=95=84=EC=88=98 =EC=A7=88=EB=AC=B8=
+"> *</span></h2></div><div style=3D"padding: 0 12px;"><div style=3D"width: =
+100%;"><div dir=3D"auto" style=3D"white-space: pre-wrap;border-bottom: 1px =
+dotted rgba(0,0,0,0.38);margin: 12px 0 8px; min-height: 20px;display: inlin=
+e-block; max-width: 100%; min-width: 50%;">=EA=B9=80=EB=AF=BC=EC=A0=95</div=
+></div></div></div><div style=3D"border: 1px solid #dadce0; padding: 20px 1=
+2px;background-color: #fff; border-radius: 8px; margin-bottom: 12px;margin-=
+bottom: 12px;"><div style=3D"padding: 0 12px;"><h2 dir=3D"auto" style=3D"co=
+lor: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 16px=
+; font-weight: 400; line-height: 24px;white-space: pre-wrap;margin: 0 0 16p=
+x;">1.=C2=A0=EC=9E=90=EB=B0=94=EC=8A=A4=ED=81=AC=EB=A6=BD=ED=8A=B8=EC=97=90=
+=EC=84=9C =EA=B0=9D=EC=B2=B4=EB=A5=BC =EC=83=9D=EC=84=B1=ED=95=A0 =EB=95=8C=
+ =EC=A3=BC=EB=A1=9C =EC=82=AC=EC=9A=A9=EB=90=98=EB=8A=94 =EC=83=9D=EC=84=B1=
+=EC=9E=90 =ED=95=A8=EC=88=98=EB=8A=94 =EB=AC=B4=EC=97=87=EC=9D=B8=EA=B0=80=
+=EC=9A=94?<span style=3D"color: #d93025;" aria-label=3D"=ED=95=84=EC=88=98 =
+=EC=A7=88=EB=AC=B8"> *</span></h2></div><div style=3D"padding: 0 12px;"><di=
+v style=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: R=
+oboto,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-he=
+ight: 20px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><d=
+iv role=3D"radio" aria-checked=3D"false" aria-label=3D"1. create()" style=
+=3D"border: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50=
+%;"></div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: =
+break-word;">1. create()</td></tr></table></div><div style=3D"margin-top: 1=
+6px;"><table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sa=
+ns-serif;font-size: 14px; font-weight: 400; line-height: 20px;margin-top: 8=
+px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"true"=
+ aria-label=3D"2. newObject()" style=3D"border: solid 2px #5f6368; height: =
+16px; width: 16px; border-radius: 50%;"><div style=3D"background-color: #5f=
+6368; border: solid 5px #5f6368; border-radius: 50%; margin: 3px; height: 0=
+; width: 0;"></div></div></td><td style=3D"min-width: 8px;"></td><td style=
+=3D"word-break: break-word;">2. newObject()</td></tr></table></div><div sty=
+le=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: Roboto=
+,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height:=
+ 20px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div ro=
+le=3D"radio" aria-checked=3D"false" aria-label=3D"3. constructor()" style=
+=3D"border: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50=
+%;"></div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: =
+break-word;">3. constructor()</td></tr></table></div><div style=3D"margin-t=
+op: 16px;"><table style=3D"color: #202124;font-family: Roboto,Helvetica,Ari=
+al,sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;color: #=
+70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" a=
+ria-checked=3D"false" aria-label=3D"4. Object()" style=3D"border: solid 2px=
+ #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div></td><td st=
+yle=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">4. Objec=
+t()</td></tr></table></div></div></div><div style=3D"border: 1px solid #dad=
+ce0; padding: 20px 12px;background-color: #fff; border-radius: 8px; margin-=
+bottom: 12px;margin-bottom: 12px;"><div style=3D"padding: 0 12px;"><h2 dir=
+=3D"auto" style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-=
+serif;font-size: 16px; font-weight: 400; line-height: 24px;white-space: pre=
+-wrap;margin: 0 0 16px;">2.=C2=A0=EC=9E=90=EB=B0=94=EC=8A=A4=ED=81=AC=EB=A6=
+=BD=ED=8A=B8 =EC=83=9D=EC=84=B1=EC=9E=90 =ED=95=A8=EC=88=98=EC=97=90=EC=84=
+=9C this =ED=82=A4=EC=9B=8C=EB=93=9C=EB=8A=94 =EB=AC=B4=EC=97=87=EC=9D=84 =
+=EA=B0=80=EB=A6=AC=ED=82=A4=EB=82=98=EC=9A=94?<span style=3D"color: #d93025=
+;" aria-label=3D"=ED=95=84=EC=88=98 =EC=A7=88=EB=AC=B8"> *</span></h2></div=
+><div style=3D"padding: 0 12px;"><div style=3D"margin-top: 16px;"><table st=
+yle=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-s=
+ize: 14px; font-weight: 400; line-height: 20px;margin-top: 8px; table-layou=
+t: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"true" aria-label=3D"=
+1. =EA=B0=9D=EC=B2=B4 =EC=9E=90=EC=B2=B4=EB=A5=BC =EA=B0=80=EB=A6=AC=ED=82=
+=B4" style=3D"border: solid 2px #5f6368; height: 16px; width: 16px; border-=
+radius: 50%;"><div style=3D"background-color: #5f6368; border: solid 5px #5=
+f6368; border-radius: 50%; margin: 3px; height: 0; width: 0;"></div></div><=
+/td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;=
+">1. =EA=B0=9D=EC=B2=B4 =EC=9E=90=EC=B2=B4=EB=A5=BC =EA=B0=80=EB=A6=AC=ED=
+=82=B4</td></tr></table></div><div style=3D"margin-top: 16px;"><table style=
+=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size=
+: 14px; font-weight: 400; line-height: 20px;color: #70757a;margin-top: 8px;=
+ table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"false" a=
+ria-label=3D"2. =EC=83=9D=EC=84=B1=EC=9E=90 =ED=95=A8=EC=88=98=EB=A5=BC =EA=
+=B0=80=EB=A6=AC=ED=82=B4" style=3D"border: solid 2px #9aa0a6; height: 16px;=
+ width: 16px; border-radius: 50%;"></div></td><td style=3D"min-width: 8px;"=
+></td><td style=3D"word-break: break-word;">2. =EC=83=9D=EC=84=B1=EC=9E=90 =
+=ED=95=A8=EC=88=98=EB=A5=BC =EA=B0=80=EB=A6=AC=ED=82=B4</td></tr></table></=
+div><div style=3D"margin-top: 16px;"><table style=3D"color: #202124;font-fa=
+mily: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; =
+line-height: 20px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr=
+><td><div role=3D"radio" aria-checked=3D"false" aria-label=3D"3. =EC=A0=84=
+=EC=97=AD =EA=B0=9D=EC=B2=B4=EB=A5=BC =EA=B0=80=EB=A6=AC=ED=82=B4" style=3D=
+"border: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"=
+></div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: bre=
+ak-word;">3. =EC=A0=84=EC=97=AD =EA=B0=9D=EC=B2=B4=EB=A5=BC =EA=B0=80=EB=A6=
+=AC=ED=82=B4</td></tr></table></div><div style=3D"margin-top: 16px;"><table=
+ style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;fon=
+t-size: 14px; font-weight: 400; line-height: 20px;color: #70757a;margin-top=
+: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"fa=
+lse" aria-label=3D"4. =EC=9D=B8=EC=8A=A4=ED=84=B4=EC=8A=A4=EB=A5=BC =EA=B0=
+=80=EB=A6=AC=ED=82=B4" style=3D"border: solid 2px #9aa0a6; height: 16px; wi=
+dth: 16px; border-radius: 50%;"></div></td><td style=3D"min-width: 8px;"></=
+td><td style=3D"word-break: break-word;">4. =EC=9D=B8=EC=8A=A4=ED=84=B4=EC=
+=8A=A4=EB=A5=BC =EA=B0=80=EB=A6=AC=ED=82=B4</td></tr></table></div></div></=
+div><div style=3D"border: 1px solid #dadce0; padding: 20px 12px;background-=
+color: #fff; border-radius: 8px; margin-bottom: 12px;margin-bottom: 12px;">=
+<div style=3D"padding: 0 12px;"><h2 dir=3D"auto" style=3D"color: #202124;fo=
+nt-family: Roboto,Helvetica,Arial,sans-serif;font-size: 16px; font-weight: =
+400; line-height: 24px;white-space: pre-wrap;margin: 0 0 16px;">3.=C2=A0=EC=
+=9E=90=EB=B0=94=EC=8A=A4=ED=81=AC=EB=A6=BD=ED=8A=B8 =EC=83=9D=EC=84=B1=EC=
+=9E=90 =ED=95=A8=EC=88=98=EC=97=90=EC=84=9C =EC=82=AC=EC=9A=A9=EB=90=98=EB=
+=8A=94 =ED=94=84=EB=A1=9C=ED=8D=BC=ED=8B=B0=EC=99=80 =EB=A9=94=EC=84=9C=EB=
+=93=9C=EB=A5=BC =EC=A0=95=EC=9D=98=ED=95=A0 =EB=95=8C, =EC=96=B4=EB=96=A4 =
+=ED=82=A4=EC=9B=8C=EB=93=9C=EB=A5=BC =EC=82=AC=EC=9A=A9=ED=95=98=EB=82=98=
+=EC=9A=94?<span style=3D"color: #d93025;" aria-label=3D"=ED=95=84=EC=88=98 =
+=EC=A7=88=EB=AC=B8"> *</span></h2></div><div style=3D"padding: 0 12px;"><di=
+v style=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: R=
+oboto,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-he=
+ight: 20px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><d=
+iv role=3D"radio" aria-checked=3D"false" aria-label=3D"1. define" style=3D"=
+border: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;">=
+</div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: brea=
+k-word;">1. define</td></tr></table></div><div style=3D"margin-top: 16px;">=
+<table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-ser=
+if;font-size: 14px; font-weight: 400; line-height: 20px;color: #70757a;marg=
+in-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=
+=3D"false" aria-label=3D"2. set" style=3D"border: solid 2px #9aa0a6; height=
+: 16px; width: 16px; border-radius: 50%;"></div></td><td style=3D"min-width=
+: 8px;"></td><td style=3D"word-break: break-word;">2. set</td></tr></table>=
+</div><div style=3D"margin-top: 16px;"><table style=3D"color: #202124;font-=
+family: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400=
+; line-height: 20px;margin-top: 8px; table-layout: fixed;"><tr><td><div rol=
+e=3D"radio" aria-checked=3D"true" aria-label=3D"3. this" style=3D"border: s=
+olid 2px #5f6368; height: 16px; width: 16px; border-radius: 50%;"><div styl=
+e=3D"background-color: #5f6368; border: solid 5px #5f6368; border-radius: 5=
+0%; margin: 3px; height: 0; width: 0;"></div></div></td><td style=3D"min-wi=
+dth: 8px;"></td><td style=3D"word-break: break-word;">3. this</td></tr></ta=
+ble></div><div style=3D"margin-top: 16px;"><table style=3D"color: #202124;f=
+ont-family: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-weight:=
+ 400; line-height: 20px;color: #70757a;margin-top: 8px; table-layout: fixed=
+;"><tr><td><div role=3D"radio" aria-checked=3D"false" aria-label=3D"4. prot=
+otype" style=3D"border: solid 2px #9aa0a6; height: 16px; width: 16px; borde=
+r-radius: 50%;"></div></td><td style=3D"min-width: 8px;"></td><td style=3D"=
+word-break: break-word;">4. prototype</td></tr></table></div></div></div><d=
+iv style=3D"border: 1px solid #dadce0; padding: 20px 12px;background-color:=
+ #fff; border-radius: 8px; margin-bottom: 12px;margin-bottom: 12px;"><div s=
+tyle=3D"padding: 0 12px;"><h2 dir=3D"auto" style=3D"color: #202124;font-fam=
+ily: Roboto,Helvetica,Arial,sans-serif;font-size: 16px; font-weight: 400; l=
+ine-height: 24px;white-space: pre-wrap;margin: 0 0 16px;">4.=C2=A0=EC=9E=90=
+=EB=B0=94=EC=8A=A4=ED=81=AC=EB=A6=BD=ED=8A=B8 =EC=83=9D=EC=84=B1=EC=9E=90 =
+=ED=95=A8=EC=88=98=EC=97=90=EC=84=9C =EC=82=AC=EC=9A=A9=EB=90=98=EB=8A=94 =
+=ED=94=84=EB=A1=9C=ED=86=A0=ED=83=80=EC=9E=85(prototype)=EC=9D=98 =EC=97=AD=
+=ED=95=A0=EC=9D=80 =EB=AC=B4=EC=97=87=EC=9D=B8=EA=B0=80=EC=9A=94?<span styl=
+e=3D"color: #d93025;" aria-label=3D"=ED=95=84=EC=88=98 =EC=A7=88=EB=AC=B8">=
+ *</span></h2></div><div style=3D"padding: 0 12px;"><div dir=3D"auto" style=
+=3D"white-space: pre-wrap;border-bottom: 1px dotted rgba(0,0,0,0.38);margin=
+: 12px 0 8px; min-height: 20px;width: 100%;">prototype link=EC=99=80 constr=
+uctor=EB=9E=80 =ED=8A=B9=EC=84=B1=EC=9D=84 =EA=B0=80=EC=A7=80=EA=B3=A0 =EC=
+=9E=88=EB=8A=94=EB=8D=B0 =EC=9E=90=EC=8B=A0=EC=9D=B4 =EB=A7=8C=EB=93=A4=EC=
+=96=B4=EB=82=B8 =EA=B0=9D=EC=B2=B4=EC=9D=98 =EC=9B=90=ED=98=95=EC=9D=84 =EC=
+=B0=B8=EC=A1=B0=ED=95=98=EB=8A=94 =EC=97=AD=ED=95=A0=EA=B3=BC =EC=A0=95=EC=
+=9D=98=EB=90=9C =ED=95=A8=EC=88=98=EA=B0=80 =EC=83=9D=EC=84=B1=EC=9E=90=EA=
+=B0=80 =EB=90=A0 =EC=88=98 =EC=9E=88=EB=8A=94 =EC=9E=90=EA=B2=A9=EC=9D=84 =
+=EB=B6=80=EC=97=AC=ED=95=9C=EB=8B=A4=EB=8A=94 =EC=9D=98=EB=AF=B8=EC=9D=B4=
+=EB=8B=A4. =EC=A6=89, =EC=83=9D=EC=84=B1=EC=9E=90=EC=9D=98 =EC=9E=90=EA=B2=
+=A9=EC=9D=84 =EA=B0=96=EC=B6=94=EA=B2=8C =ED=95=B4=EC=A3=BC=EB=8A=94 =EC=97=
+=AD=ED=95=A0=EC=9D=B4=EB=8B=A4.</div></div></div><div style=3D"border: 1px =
+solid #dadce0; padding: 20px 12px;background-color: #fff; border-radius: 8p=
+x; margin-bottom: 12px;margin-bottom: 12px;"><div style=3D"padding: 0 12px;=
+"><h2 dir=3D"auto" style=3D"color: #202124;font-family: Roboto,Helvetica,Ar=
+ial,sans-serif;font-size: 16px; font-weight: 400; line-height: 24px;white-s=
+pace: pre-wrap;margin: 0 0 16px;">5.=C2=A0=EC=9E=90=EB=B0=94=EC=8A=A4=ED=81=
+=AC=EB=A6=BD=ED=8A=B8=EC=97=90=EC=84=9C =EB=B9=8C=ED=8A=B8=EC=9D=B8 =EC=83=
+=9D=EC=84=B1=EC=9E=90=EB=9E=80 =EB=AC=B4=EC=97=87=EC=9D=B8=EA=B0=80=EC=9A=
+=94? =EC=98=88=EB=A5=BC =EB=93=A4=EC=96=B4 =EC=84=A4=EB=AA=85=ED=95=B4=EB=
+=B3=B4=EC=84=B8=EC=9A=94.<span style=3D"color: #d93025;" aria-label=3D"=ED=
+=95=84=EC=88=98 =EC=A7=88=EB=AC=B8"> *</span></h2></div><div style=3D"paddi=
+ng: 0 12px;"><div dir=3D"auto" style=3D"white-space: pre-wrap;border-bottom=
+: 1px dotted rgba(0,0,0,0.38);margin: 12px 0 8px; min-height: 20px;width: 1=
+00%;">=EC=9E=90=EB=B0=94=EC=8A=A4=ED=81=AC=EB=A6=BD=ED=8A=B8=EC=97=90 =EB=
+=82=B4=EC=9E=A5=EB=90=9C =EC=83=9D=EC=84=B1=EC=9E=90=EB=A1=9C =EC=9D=B4=EB=
+=A5=BC =EC=9D=B4=EC=9A=A9=ED=95=B4 =EA=B0=9D=EC=B2=B4=EB=A5=BC =EC=83=9D=EC=
+=84=B1=ED=95=A0 =EC=88=98 =EC=9E=88=EB=8B=A4. =EC=98=88=EB=A5=BC =EB=93=A4=
+=EB=A9=B4 Date=EB=9D=BC=EB=8A=94 =EB=82=A0=EC=A7=9C=EC=99=80 =EC=8B=9C=EA=
+=B0=84=EC=9D=84 =EC=B2=98=EB=A6=AC=ED=95=98=EB=8A=94  =EB=B9=8C=ED=8A=B8=EC=
+=9D=B8 =EC=83=9D=EC=84=B1=EC=9E=90=EA=B0=80 =EC=9E=88=EB=8B=A4.</div></div>=
+</div><div style=3D"border: 1px solid #dadce0; padding: 20px 12px;backgroun=
+d-color: #fff; border-radius: 8px; margin-bottom: 12px;margin-bottom: 12px;=
+"><div style=3D"padding: 0 12px;"><h2 dir=3D"auto" style=3D"color: #202124;=
+font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 16px; font-weight=
+: 400; line-height: 24px;white-space: pre-wrap;margin: 0 0 16px;">6.=C2=A0=
+=EC=9E=90=EB=B0=94=EC=8A=A4=ED=81=AC=EB=A6=BD=ED=8A=B8=EC=9D=98 =EB=B9=8C=
+=ED=8A=B8=EC=9D=B8 =EC=83=9D=EC=84=B1=EC=9E=90 =EC=A4=91 =EB=B0=B0=EC=97=B4=
+=EC=9D=84 =EC=83=9D=EC=84=B1=ED=95=98=EB=8A=94 =EC=83=9D=EC=84=B1=EC=9E=90=
+=EB=8A=94 =EB=AC=B4=EC=97=87=EC=9D=B8=EA=B0=80=EC=9A=94?<span style=3D"colo=
+r: #d93025;" aria-label=3D"=ED=95=84=EC=88=98 =EC=A7=88=EB=AC=B8"> *</span>=
+</h2></div><div style=3D"padding: 0 12px;"><div style=3D"margin-top: 16px;"=
+><table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-se=
+rif;font-size: 14px; font-weight: 400; line-height: 20px;color: #70757a;mar=
+gin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checke=
+d=3D"false" aria-label=3D"1. Object" style=3D"border: solid 2px #9aa0a6; he=
+ight: 16px; width: 16px; border-radius: 50%;"></div></td><td style=3D"min-w=
+idth: 8px;"></td><td style=3D"word-break: break-word;">1. Object</td></tr><=
+/table></div><div style=3D"margin-top: 16px;"><table style=3D"color: #20212=
+4;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-weig=
+ht: 400; line-height: 20px;margin-top: 8px; table-layout: fixed;"><tr><td><=
+div role=3D"radio" aria-checked=3D"true" aria-label=3D"2. Array" style=3D"b=
+order: solid 2px #5f6368; height: 16px; width: 16px; border-radius: 50%;"><=
+div style=3D"background-color: #5f6368; border: solid 5px #5f6368; border-r=
+adius: 50%; margin: 3px; height: 0; width: 0;"></div></div></td><td style=
+=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">2. Array</t=
+d></tr></table></div><div style=3D"margin-top: 16px;"><table style=3D"color=
+: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; f=
+ont-weight: 400; line-height: 20px;color: #70757a;margin-top: 8px; table-la=
+yout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"false" aria-label=
+=3D"3. Function" style=3D"border: solid 2px #9aa0a6; height: 16px; width: 1=
+6px; border-radius: 50%;"></div></td><td style=3D"min-width: 8px;"></td><td=
+ style=3D"word-break: break-word;">3. Function</td></tr></table></div><div =
+style=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: Rob=
+oto,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-heig=
+ht: 20px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div=
+ role=3D"radio" aria-checked=3D"false" aria-label=3D"4. String" style=3D"bo=
+rder: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></=
+div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-=
+word;">4. String</td></tr></table></div></div></div><div style=3D"border: 1=
+px solid #dadce0; padding: 20px 12px;background-color: #fff; border-radius:=
+ 8px; margin-bottom: 12px;margin-bottom: 12px;"><div style=3D"padding: 0 12=
+px;"><h2 dir=3D"auto" style=3D"color: #202124;font-family: Roboto,Helvetica=
+,Arial,sans-serif;font-size: 16px; font-weight: 400; line-height: 24px;whit=
+e-space: pre-wrap;margin: 0 0 16px;">7. =EC=9E=90=EB=B0=94=EC=8A=A4=ED=81=
+=AC=EB=A6=BD=ED=8A=B8=EC=9D=98 =EB=B9=8C=ED=8A=B8=EC=9D=B8 =EC=83=9D=EC=84=
+=B1=EC=9E=90 =EC=A4=91 =EB=82=A0=EC=A7=9C=EC=99=80 =EC=8B=9C=EA=B0=84=EC=9D=
+=84 =EB=8B=A4=EB=A3=A8=EB=8A=94 =EC=83=9D=EC=84=B1=EC=9E=90=EB=8A=94 =EB=AC=
+=B4=EC=97=87=EC=9D=B8=EA=B0=80=EC=9A=94?<br><span style=3D"color: #d93025;"=
+ aria-label=3D"=ED=95=84=EC=88=98 =EC=A7=88=EB=AC=B8"> *</span></h2></div><=
+div style=3D"padding: 0 12px;"><div style=3D"margin-top: 16px;"><table styl=
+e=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-siz=
+e: 14px; font-weight: 400; line-height: 20px;margin-top: 8px; table-layout:=
+ fixed;"><tr><td><div role=3D"radio" aria-checked=3D"true" aria-label=3D"1.=
+ Date" style=3D"border: solid 2px #5f6368; height: 16px; width: 16px; borde=
+r-radius: 50%;"><div style=3D"background-color: #5f6368; border: solid 5px =
+#5f6368; border-radius: 50%; margin: 3px; height: 0; width: 0;"></div></div=
+></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-wor=
+d;">1. Date</td></tr></table></div><div style=3D"margin-top: 16px;"><table =
+style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font=
+-size: 14px; font-weight: 400; line-height: 20px;color: #70757a;margin-top:=
+ 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"fal=
+se" aria-label=3D"2. Number" style=3D"border: solid 2px #9aa0a6; height: 16=
+px; width: 16px; border-radius: 50%;"></div></td><td style=3D"min-width: 8p=
+x;"></td><td style=3D"word-break: break-word;">2. Number</td></tr></table><=
+/div><div style=3D"margin-top: 16px;"><table style=3D"color: #202124;font-f=
+amily: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400;=
+ line-height: 20px;color: #70757a;margin-top: 8px; table-layout: fixed;"><t=
+r><td><div role=3D"radio" aria-checked=3D"false" aria-label=3D"3. RegExp" s=
+tyle=3D"border: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius=
+: 50%;"></div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-bre=
+ak: break-word;">3. RegExp</td></tr></table></div><div style=3D"margin-top:=
+ 16px;"><table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,=
+sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;color: #707=
+57a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria=
+-checked=3D"false" aria-label=3D"4. Boolean" style=3D"border: solid 2px #9a=
+a0a6; height: 16px; width: 16px; border-radius: 50%;"></div></td><td style=
+=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">4. Boolean<=
+/td></tr></table></div></div></div><div style=3D"border: 1px solid #dadce0;=
+ padding: 20px 12px;background-color: #fff; border-radius: 8px; margin-bott=
+om: 12px;margin-bottom: 12px;"><div style=3D"padding: 0 12px;"><h2 dir=3D"a=
+uto" style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif=
+;font-size: 16px; font-weight: 400; line-height: 24px;white-space: pre-wrap=
+;margin: 0 0 16px;">8.=C2=A0JavaScript=EC=97=90=EC=84=9C =EC=A7=80=EC=A0=95=
+=EB=90=9C =EC=8B=9C=EA=B0=84 =ED=9B=84=EC=97=90 =EC=BD=94=EB=93=9C=EB=A5=BC=
+ =EC=8B=A4=ED=96=89=ED=95=98=EB=8A=94 =ED=83=80=EC=9D=B4=EB=A8=B8 =EB=A9=94=
+=EC=86=8C=EB=93=9C=EB=8A=94 =EB=AC=B4=EC=97=87=EC=9D=B8=EA=B0=80=EC=9A=94?<=
+span style=3D"color: #d93025;" aria-label=3D"=ED=95=84=EC=88=98 =EC=A7=88=
+=EB=AC=B8"> *</span></h2></div><div style=3D"padding: 0 12px;"><div style=
+=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,H=
+elvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height: 2=
+0px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=
+=3D"radio" aria-checked=3D"false" aria-label=3D"1. setInterval()" style=3D"=
+border: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;">=
+</div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: brea=
+k-word;">1. setInterval()</td></tr></table></div><div style=3D"margin-top: =
+16px;"><table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,s=
+ans-serif;font-size: 14px; font-weight: 400; line-height: 20px;margin-top: =
+8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"true=
+" aria-label=3D"2. setTimeout()" style=3D"border: solid 2px #5f6368; height=
+: 16px; width: 16px; border-radius: 50%;"><div style=3D"background-color: #=
+5f6368; border: solid 5px #5f6368; border-radius: 50%; margin: 3px; height:=
+ 0; width: 0;"></div></div></td><td style=3D"min-width: 8px;"></td><td styl=
+e=3D"word-break: break-word;">2. setTimeout()</td></tr></table></div><div s=
+tyle=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: Robo=
+to,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-heigh=
+t: 20px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div =
+role=3D"radio" aria-checked=3D"false" aria-label=3D"3. clearInterval()" sty=
+le=3D"border: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius: =
+50%;"></div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break=
+: break-word;">3. clearInterval()</td></tr></table></div><div style=3D"marg=
+in-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,Helvetica=
+,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;colo=
+r: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radi=
+o" aria-checked=3D"false" aria-label=3D"4. clearTimeout()" style=3D"border:=
+ solid 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div><=
+/td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;=
+">4. clearTimeout()</td></tr></table></div></div></div><div style=3D"border=
+: 1px solid #dadce0; padding: 20px 12px;background-color: #fff; border-radi=
+us: 8px; margin-bottom: 12px;margin-bottom: 12px;"><div style=3D"padding: 0=
+ 12px;"><h2 dir=3D"auto" style=3D"color: #202124;font-family: Roboto,Helvet=
+ica,Arial,sans-serif;font-size: 16px; font-weight: 400; line-height: 24px;w=
+hite-space: pre-wrap;margin: 0 0 16px;">9.=C2=A0setTimeout() =EB=A9=94=EC=
+=86=8C=EB=93=9C=EC=9D=98 =EC=B2=AB =EB=B2=88=EC=A7=B8 =EB=A7=A4=EA=B0=9C=EB=
+=B3=80=EC=88=98=EB=A1=9C =EC=A0=84=EB=8B=AC=EB=90=98=EB=8A=94 =EA=B0=92=EC=
+=9D=80 =EB=AC=B4=EC=97=87=EC=9D=B8=EA=B0=80=EC=9A=94?<span style=3D"color: =
+#d93025;" aria-label=3D"=ED=95=84=EC=88=98 =EC=A7=88=EB=AC=B8"> *</span></h=
+2></div><div style=3D"padding: 0 12px;"><div style=3D"margin-top: 16px;"><t=
+able style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif=
+;font-size: 14px; font-weight: 400; line-height: 20px;margin-top: 8px; tabl=
+e-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"true" aria-la=
+bel=3D"1. =EC=8B=A4=ED=96=89=ED=95=A0 =ED=95=A8=EC=88=98" style=3D"border: =
+solid 2px #5f6368; height: 16px; width: 16px; border-radius: 50%;"><div sty=
+le=3D"background-color: #5f6368; border: solid 5px #5f6368; border-radius: =
+50%; margin: 3px; height: 0; width: 0;"></div></div></td><td style=3D"min-w=
+idth: 8px;"></td><td style=3D"word-break: break-word;">1. =EC=8B=A4=ED=96=
+=89=ED=95=A0 =ED=95=A8=EC=88=98</td></tr></table></div><div style=3D"margin=
+-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,Helvetica,A=
+rial,sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;color:=
+ #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio"=
+ aria-checked=3D"false" aria-label=3D"2. =EC=A7=80=EC=97=B0 =EC=8B=9C=EA=B0=
+=84(=EB=B0=80=EB=A6=AC=EC=B4=88 =EB=8B=A8=EC=9C=84)" style=3D"border: solid=
+ 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div></td><t=
+d style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">2. =
+=EC=A7=80=EC=97=B0 =EC=8B=9C=EA=B0=84(=EB=B0=80=EB=A6=AC=EC=B4=88 =EB=8B=A8=
+=EC=9C=84)</td></tr></table></div><div style=3D"margin-top: 16px;"><table s=
+tyle=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-=
+size: 14px; font-weight: 400; line-height: 20px;color: #70757a;margin-top: =
+8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"fals=
+e" aria-label=3D"3. =EC=9D=B8=ED=84=B0=EB=B2=8C =EC=8B=9C=EA=B0=84(=EB=B0=
+=80=EB=A6=AC=EC=B4=88 =EB=8B=A8=EC=9C=84)" style=3D"border: solid 2px #9aa0=
+a6; height: 16px; width: 16px; border-radius: 50%;"></div></td><td style=3D=
+"min-width: 8px;"></td><td style=3D"word-break: break-word;">3. =EC=9D=B8=
+=ED=84=B0=EB=B2=8C =EC=8B=9C=EA=B0=84(=EB=B0=80=EB=A6=AC=EC=B4=88 =EB=8B=A8=
+=EC=9C=84)</td></tr></table></div><div style=3D"margin-top: 16px;"><table s=
+tyle=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-=
+size: 14px; font-weight: 400; line-height: 20px;color: #70757a;margin-top: =
+8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"fals=
+e" aria-label=3D"4. =ED=83=80=EC=9D=B4=EB=A8=B8 ID" style=3D"border: solid =
+2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div></td><td=
+ style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">4. =
+=ED=83=80=EC=9D=B4=EB=A8=B8 ID</td></tr></table></div></div></div><div styl=
+e=3D"border: 1px solid #dadce0; padding: 20px 12px;background-color: #fff; =
+border-radius: 8px; margin-bottom: 12px;margin-bottom: 12px;"><div style=3D=
+"padding: 0 12px;"><h2 dir=3D"auto" style=3D"color: #202124;font-family: Ro=
+boto,Helvetica,Arial,sans-serif;font-size: 16px; font-weight: 400; line-hei=
+ght: 24px;white-space: pre-wrap;margin: 0 0 16px;">10.=C2=A0setInterval() =
+=EB=A9=94=EC=86=8C=EB=93=9C=EB=A5=BC =EC=82=AC=EC=9A=A9=ED=95=98=EC=97=AC =
+=EC=BD=94=EB=93=9C=EB=A5=BC =EC=8B=A4=ED=96=89=ED=95=9C =ED=9B=84, =EC=BD=
+=94=EB=93=9C=EB=A5=BC =EC=A4=91=EC=A7=80=ED=95=98=EA=B8=B0 =EC=9C=84=ED=95=
+=B4 =EC=82=AC=EC=9A=A9=ED=95=98=EB=8A=94 =EB=A9=94=EC=86=8C=EB=93=9C=EB=8A=
+=94 =EB=AC=B4=EC=97=87=EC=9D=B8=EA=B0=80=EC=9A=94?<span style=3D"color: #d9=
+3025;" aria-label=3D"=ED=95=84=EC=88=98 =EC=A7=88=EB=AC=B8"> *</span></h2><=
+/div><div style=3D"padding: 0 12px;"><div style=3D"margin-top: 16px;"><tabl=
+e style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;fo=
+nt-size: 14px; font-weight: 400; line-height: 20px;margin-top: 8px; table-l=
+ayout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"true" aria-label=
+=3D"1. clearInterval()" style=3D"border: solid 2px #5f6368; height: 16px; w=
+idth: 16px; border-radius: 50%;"><div style=3D"background-color: #5f6368; b=
+order: solid 5px #5f6368; border-radius: 50%; margin: 3px; height: 0; width=
+: 0;"></div></div></td><td style=3D"min-width: 8px;"></td><td style=3D"word=
+-break: break-word;">1. clearInterval()</td></tr></table></div><div style=
+=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,H=
+elvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height: 2=
+0px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=
+=3D"radio" aria-checked=3D"false" aria-label=3D"2. clearTimeout()" style=3D=
+"border: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"=
+></div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: bre=
+ak-word;">2. clearTimeout()</td></tr></table></div><div style=3D"margin-top=
+: 16px;"><table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial=
+,sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;color: #70=
+757a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" ari=
+a-checked=3D"false" aria-label=3D"3. setInterval()" style=3D"border: solid =
+2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div></td><td=
+ style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">3. se=
+tInterval()</td></tr></table></div><div style=3D"margin-top: 16px;"><table =
+style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font=
+-size: 14px; font-weight: 400; line-height: 20px;color: #70757a;margin-top:=
+ 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"fal=
+se" aria-label=3D"4. setTimeout()" style=3D"border: solid 2px #9aa0a6; heig=
+ht: 16px; width: 16px; border-radius: 50%;"></div></td><td style=3D"min-wid=
+th: 8px;"></td><td style=3D"word-break: break-word;">4. setTimeout()</td></=
+tr></table></div></div></div><div style=3D"border: 1px solid #dadce0; paddi=
+ng: 20px 12px;background-color: #fff; border-radius: 8px; margin-bottom: 12=
+px;margin-bottom: 12px;"><div style=3D"padding: 0 12px;"><h2 dir=3D"auto" s=
+tyle=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-=
+size: 16px; font-weight: 400; line-height: 24px;white-space: pre-wrap;margi=
+n: 0 0 16px;">11.=C2=A0=EC=95=84=EB=9E=98 =EC=BD=94=EB=93=9C=EB=A5=BC =EC=
+=8B=A4=ED=96=89 =ED=96=88=EC=9D=84=EB=95=8C console.log=EC=97=90 =EC=B6=9C=
+=EB=A0=A5=EB=90=98=EB=8A=94 =EA=B0=92=EC=9D=84 =EC=9E=91=EC=84=B1=ED=95=98=
+=EC=8B=9C=EC=98=A4.<div>=EB=8B=B5=EB=B3=80 =EC=9E=91=EC=84=B1 : arr=3D , ne=
+wArr2=3D</div><span style=3D"color: #d93025;" aria-label=3D"=ED=95=84=EC=88=
+=98 =EC=A7=88=EB=AC=B8"> *</span></h2><img style=3D"border: none; max-heigh=
+t: 100%; max-width: 100%;" title=3D"" src=3D"https://lh5.googleusercontent.=
+com/NMTzLKpQtYd6XtzSwfWEDbFMIsGaa_qMIT-YhY4NIK4VuV-z5HtQCFEAZdNR6Ya_GxyYcnk=
+YhBWNtBMMikoMYo6zUxMbxAU8ZC7KEEw-kqU7eSEdM-mSimOeRZ8_LUeY3g=3Dw295" alt=3D"=
+=EC=BA=A1=EC=85=98 =EC=97=86=EB=8A=94 =EC=9D=B4=EB=AF=B8=EC=A7=80"></div><d=
+iv style=3D"padding: 0 12px;"><div style=3D"width: 100%;"><div dir=3D"auto"=
+ style=3D"white-space: pre-wrap;border-bottom: 1px dotted rgba(0,0,0,0.38);=
+margin: 12px 0 8px; min-height: 20px;display: inline-block; max-width: 100%=
+; min-width: 50%;">arr =3D [3, 2, 1], newArr2 =3D [d]</div></div></div></di=
+v><div style=3D"border: 1px solid #dadce0; padding: 20px 12px;background-co=
+lor: #fff; border-radius: 8px; margin-bottom: 12px;margin-bottom: 12px;"><d=
+iv style=3D"padding: 0 12px;"><h2 dir=3D"auto" style=3D"color: #202124;font=
+-family: Roboto,Helvetica,Arial,sans-serif;font-size: 16px; font-weight: 40=
+0; line-height: 24px;white-space: pre-wrap;margin: 0 0 16px;">12.=C2=A0=EC=
+=9E=90=EB=B0=94=EC=8A=A4=ED=81=AC=EB=A6=BD=ED=8A=B8=EC=97=90=EC=84=9C =ED=
+=81=B4=EB=9E=98=EC=8A=A4=EB=A5=BC =EC=84=A0=EC=96=B8=ED=95=98=EB=8A=94 =ED=
+=82=A4=EC=9B=8C=EB=93=9C=EB=8A=94 =EB=AC=B4=EC=97=87=EC=9D=B8=EA=B0=80=EC=
+=9A=94?<span style=3D"color: #d93025;" aria-label=3D"=ED=95=84=EC=88=98 =EC=
+=A7=88=EB=AC=B8"> *</span></h2></div><div style=3D"padding: 0 12px;"><div s=
+tyle=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: Robo=
+to,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-heigh=
+t: 20px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div =
+role=3D"radio" aria-checked=3D"false" aria-label=3D"1. object" style=3D"bor=
+der: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></d=
+iv></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-w=
+ord;">1. object</td></tr></table></div><div style=3D"margin-top: 16px;"><ta=
+ble style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;=
+font-size: 14px; font-weight: 400; line-height: 20px;color: #70757a;margin-=
+top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D=
+"false" aria-label=3D"2. function" style=3D"border: solid 2px #9aa0a6; heig=
+ht: 16px; width: 16px; border-radius: 50%;"></div></td><td style=3D"min-wid=
+th: 8px;"></td><td style=3D"word-break: break-word;">2. function</td></tr><=
+/table></div><div style=3D"margin-top: 16px;"><table style=3D"color: #20212=
+4;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-weig=
+ht: 400; line-height: 20px;margin-top: 8px; table-layout: fixed;"><tr><td><=
+div role=3D"radio" aria-checked=3D"true" aria-label=3D"3. class" style=3D"b=
+order: solid 2px #5f6368; height: 16px; width: 16px; border-radius: 50%;"><=
+div style=3D"background-color: #5f6368; border: solid 5px #5f6368; border-r=
+adius: 50%; margin: 3px; height: 0; width: 0;"></div></div></td><td style=
+=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">3. class</t=
+d></tr></table></div><div style=3D"margin-top: 16px;"><table style=3D"color=
+: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; f=
+ont-weight: 400; line-height: 20px;color: #70757a;margin-top: 8px; table-la=
+yout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"false" aria-label=
+=3D"4. let" style=3D"border: solid 2px #9aa0a6; height: 16px; width: 16px; =
+border-radius: 50%;"></div></td><td style=3D"min-width: 8px;"></td><td styl=
+e=3D"word-break: break-word;">4. let</td></tr></table></div></div></div><di=
+v style=3D"border: 1px solid #dadce0; padding: 20px 12px;background-color: =
+#fff; border-radius: 8px; margin-bottom: 12px;margin-bottom: 12px;"><div st=
+yle=3D"padding: 0 12px;"><h2 dir=3D"auto" style=3D"color: #202124;font-fami=
+ly: Roboto,Helvetica,Arial,sans-serif;font-size: 16px; font-weight: 400; li=
+ne-height: 24px;white-space: pre-wrap;margin: 0 0 16px;">13.=C2=A0=ED=81=B4=
+=EB=9E=98=EC=8A=A4=EC=97=90=EC=84=9C =EC=83=9D=EC=84=B1=EC=9E=90 =ED=95=A8=
+=EC=88=98=EB=A5=BC =EC=A0=95=EC=9D=98=ED=95=98=EB=8A=94 =EB=B0=A9=EB=B2=95=
+=EC=9D=80 =EC=96=B4=EB=96=A4 =EA=B2=83=EC=9D=B8=EA=B0=80=EC=9A=94?<span sty=
+le=3D"color: #d93025;" aria-label=3D"=ED=95=84=EC=88=98 =EC=A7=88=EB=AC=B8"=
+> *</span></h2></div><div style=3D"padding: 0 12px;"><div style=3D"margin-t=
+op: 16px;"><table style=3D"color: #202124;font-family: Roboto,Helvetica,Ari=
+al,sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;color: #=
+70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" a=
+ria-checked=3D"false" aria-label=3D"1. .init =ED=95=A8=EC=88=98=EB=A5=BC =
+=EC=82=AC=EC=9A=A9=ED=95=98=EC=97=AC =EC=A0=95=EC=9D=98=ED=95=A9=EB=8B=88=
+=EB=8B=A4." style=3D"border: solid 2px #9aa0a6; height: 16px; width: 16px; =
+border-radius: 50%;"></div></td><td style=3D"min-width: 8px;"></td><td styl=
+e=3D"word-break: break-word;">1. .init =ED=95=A8=EC=88=98=EB=A5=BC =EC=82=
+=AC=EC=9A=A9=ED=95=98=EC=97=AC =EC=A0=95=EC=9D=98=ED=95=A9=EB=8B=88=EB=8B=
+=A4.</td></tr></table></div><div style=3D"margin-top: 16px;"><table style=
+=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size=
+: 14px; font-weight: 400; line-height: 20px;color: #70757a;margin-top: 8px;=
+ table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"false" a=
+ria-label=3D"2. constructor =ED=95=A8=EC=88=98=EB=A5=BC =EC=82=AC=EC=9A=A9=
+=ED=95=98=EC=97=AC =EC=A0=95=EC=9D=98=ED=95=A9=EB=8B=88=EB=8B=A4" style=3D"=
+border: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;">=
+</div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: brea=
+k-word;">2. constructor =ED=95=A8=EC=88=98=EB=A5=BC =EC=82=AC=EC=9A=A9=ED=
+=95=98=EC=97=AC =EC=A0=95=EC=9D=98=ED=95=A9=EB=8B=88=EB=8B=A4</td></tr></ta=
+ble></div><div style=3D"margin-top: 16px;"><table style=3D"color: #202124;f=
+ont-family: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-weight:=
+ 400; line-height: 20px;margin-top: 8px; table-layout: fixed;"><tr><td><div=
+ role=3D"radio" aria-checked=3D"true" aria-label=3D"3. prototype =ED=95=A8=
+=EC=88=98=EB=A5=BC =EC=82=AC=EC=9A=A9=ED=95=98=EC=97=AC =EC=A0=95=EC=9D=98=
+=ED=95=A9=EB=8B=88=EB=8B=A4." style=3D"border: solid 2px #5f6368; height: 1=
+6px; width: 16px; border-radius: 50%;"><div style=3D"background-color: #5f6=
+368; border: solid 5px #5f6368; border-radius: 50%; margin: 3px; height: 0;=
+ width: 0;"></div></div></td><td style=3D"min-width: 8px;"></td><td style=
+=3D"word-break: break-word;">3. prototype =ED=95=A8=EC=88=98=EB=A5=BC =EC=
+=82=AC=EC=9A=A9=ED=95=98=EC=97=AC =EC=A0=95=EC=9D=98=ED=95=A9=EB=8B=88=EB=
+=8B=A4.</td></tr></table></div><div style=3D"margin-top: 16px;"><table styl=
+e=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-siz=
+e: 14px; font-weight: 400; line-height: 20px;color: #70757a;margin-top: 8px=
+; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"false" =
+aria-label=3D"4. =ED=81=B4=EB=9E=98=EC=8A=A4=EC=97=90=EC=84=9C =EC=83=9D=EC=
+=84=B1=EC=9E=90 =ED=95=A8=EC=88=98=EB=A5=BC =EC=A0=95=EC=9D=98=ED=95=A0 =ED=
+=95=84=EC=9A=94=EA=B0=80 =EC=97=86=EC=8A=B5=EB=8B=88=EB=8B=A4." style=3D"bo=
+rder: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></=
+div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-=
+word;">4. =ED=81=B4=EB=9E=98=EC=8A=A4=EC=97=90=EC=84=9C =EC=83=9D=EC=84=B1=
+=EC=9E=90 =ED=95=A8=EC=88=98=EB=A5=BC =EC=A0=95=EC=9D=98=ED=95=A0 =ED=95=84=
+=EC=9A=94=EA=B0=80 =EC=97=86=EC=8A=B5=EB=8B=88=EB=8B=A4.</td></tr></table><=
+/div></div></div><div style=3D"border: 1px solid #dadce0; padding: 20px 12p=
+x;background-color: #fff; border-radius: 8px; margin-bottom: 12px;margin-bo=
+ttom: 12px;"><div style=3D"padding: 0 12px;"><h2 dir=3D"auto" style=3D"colo=
+r: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 16px; =
+font-weight: 400; line-height: 24px;white-space: pre-wrap;margin: 0 0 16px;=
+">14.=C2=A0=EC=9E=90=EB=B0=94=EC=8A=A4=ED=81=AC=EB=A6=BD=ED=8A=B8 =ED=81=B4=
+=EB=9E=98=EC=8A=A4=EC=97=90=EC=84=9C =EB=A9=94=EC=84=9C=EB=93=9C=EB=A5=BC =
+=EC=B6=94=EA=B0=80=ED=95=98=EB=8A=94 =EB=B0=A9=EB=B2=95=EC=9D=80 =EB=AC=B4=
+=EC=97=87=EC=9D=B8=EA=B0=80=EC=9A=94?<span style=3D"color: #d93025;" aria-l=
+abel=3D"=ED=95=84=EC=88=98 =EC=A7=88=EB=AC=B8"> *</span></h2></div><div sty=
+le=3D"padding: 0 12px;"><div style=3D"margin-top: 16px;"><table style=3D"co=
+lor: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 14px=
+; font-weight: 400; line-height: 20px;color: #70757a;margin-top: 8px; table=
+-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"false" aria-la=
+bel=3D"1. =ED=81=B4=EB=9E=98=EC=8A=A4=EC=97=90=EC=84=9C =EB=A9=94=EC=84=9C=
+=EB=93=9C=EB=A5=BC =EC=B6=94=EA=B0=80=ED=95=A0 =EC=88=98 =EC=97=86=EC=8A=B5=
+=EB=8B=88=EB=8B=A4." style=3D"border: solid 2px #9aa0a6; height: 16px; widt=
+h: 16px; border-radius: 50%;"></div></td><td style=3D"min-width: 8px;"></td=
+><td style=3D"word-break: break-word;">1. =ED=81=B4=EB=9E=98=EC=8A=A4=EC=97=
+=90=EC=84=9C =EB=A9=94=EC=84=9C=EB=93=9C=EB=A5=BC =EC=B6=94=EA=B0=80=ED=95=
+=A0 =EC=88=98 =EC=97=86=EC=8A=B5=EB=8B=88=EB=8B=A4.</td></tr></table></div>=
+<div style=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family=
+: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line=
+-height: 20px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td=
+><div role=3D"radio" aria-checked=3D"false" aria-label=3D"2. =ED=81=B4=EB=
+=9E=98=EC=8A=A4 =EB=82=B4=EB=B6=80=EC=97=90 =EB=A9=94=EC=84=9C=EB=93=9C=EB=
+=A5=BC =EC=B6=94=EA=B0=80=ED=95=A9=EB=8B=88=EB=8B=A4." style=3D"border: sol=
+id 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div></td>=
+<td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">2.=
+ =ED=81=B4=EB=9E=98=EC=8A=A4 =EB=82=B4=EB=B6=80=EC=97=90 =EB=A9=94=EC=84=9C=
+=EB=93=9C=EB=A5=BC =EC=B6=94=EA=B0=80=ED=95=A9=EB=8B=88=EB=8B=A4.</td></tr>=
+</table></div><div style=3D"margin-top: 16px;"><table style=3D"color: #2021=
+24;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-wei=
+ght: 400; line-height: 20px;margin-top: 8px; table-layout: fixed;"><tr><td>=
+<div role=3D"radio" aria-checked=3D"true" aria-label=3D"3. =ED=81=B4=EB=9E=
+=98=EC=8A=A4 =EC=99=B8=EB=B6=80=EC=97=90=EC=84=9C =EB=A9=94=EC=84=9C=EB=93=
+=9C=EB=A5=BC =EC=B6=94=EA=B0=80=ED=95=A9=EB=8B=88=EB=8B=A4." style=3D"borde=
+r: solid 2px #5f6368; height: 16px; width: 16px; border-radius: 50%;"><div =
+style=3D"background-color: #5f6368; border: solid 5px #5f6368; border-radiu=
+s: 50%; margin: 3px; height: 0; width: 0;"></div></div></td><td style=3D"mi=
+n-width: 8px;"></td><td style=3D"word-break: break-word;">3. =ED=81=B4=EB=
+=9E=98=EC=8A=A4 =EC=99=B8=EB=B6=80=EC=97=90=EC=84=9C =EB=A9=94=EC=84=9C=EB=
+=93=9C=EB=A5=BC =EC=B6=94=EA=B0=80=ED=95=A9=EB=8B=88=EB=8B=A4.</td></tr></t=
+able></div><div style=3D"margin-top: 16px;"><table style=3D"color: #202124;=
+font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-weight=
+: 400; line-height: 20px;color: #70757a;margin-top: 8px; table-layout: fixe=
+d;"><tr><td><div role=3D"radio" aria-checked=3D"false" aria-label=3D"4. =ED=
+=94=84=EB=A1=9C=ED=86=A0=ED=83=80=EC=9E=85=EC=97=90 =EB=A9=94=EC=84=9C=EB=
+=93=9C=EB=A5=BC =EC=B6=94=EA=B0=80=ED=95=A9=EB=8B=88=EB=8B=A4." style=3D"bo=
+rder: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></=
+div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-=
+word;">4. =ED=94=84=EB=A1=9C=ED=86=A0=ED=83=80=EC=9E=85=EC=97=90 =EB=A9=94=
+=EC=84=9C=EB=93=9C=EB=A5=BC =EC=B6=94=EA=B0=80=ED=95=A9=EB=8B=88=EB=8B=A4.<=
+/td></tr></table></div></div></div><div style=3D"border: 1px solid #dadce0;=
+ padding: 20px 12px;background-color: #fff; border-radius: 8px; margin-bott=
+om: 12px;margin-bottom: 12px;"><div style=3D"padding: 0 12px;"><h2 dir=3D"a=
+uto" style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif=
+;font-size: 16px; font-weight: 400; line-height: 24px;white-space: pre-wrap=
+;margin: 0 0 16px;">15.=C2=A0=EC=9E=90=EB=B0=94=EC=8A=A4=ED=81=AC=EB=A6=BD=
+=ED=8A=B8 =ED=81=B4=EB=9E=98=EC=8A=A4=EC=97=90 =EC=83=81=EC=86=8D=EC=9D=84 =
+=EA=B5=AC=ED=98=84=ED=95=98=EA=B8=B0 =EC=9C=84=ED=95=B4 =EC=82=AC=EC=9A=A9=
+=EB=90=98=EB=8A=94 =ED=82=A4=EC=9B=8C=EB=93=9C=EB=8A=94 =EB=AC=B4=EC=97=87=
+=EC=9D=B8=EA=B0=80=EC=9A=94?<span style=3D"color: #d93025;" aria-label=3D"=
+=ED=95=84=EC=88=98 =EC=A7=88=EB=AC=B8"> *</span></h2></div><div style=3D"pa=
+dding: 0 12px;"><div style=3D"margin-top: 16px;"><table style=3D"color: #20=
+2124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-w=
+eight: 400; line-height: 20px;color: #70757a;margin-top: 8px; table-layout:=
+ fixed;"><tr><td><div role=3D"radio" aria-checked=3D"false" aria-label=3D"1=
+. implements" style=3D"border: solid 2px #9aa0a6; height: 16px; width: 16px=
+; border-radius: 50%;"></div></td><td style=3D"min-width: 8px;"></td><td st=
+yle=3D"word-break: break-word;">1. implements</td></tr></table></div><div s=
+tyle=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: Robo=
+to,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-heigh=
+t: 20px;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" =
+aria-checked=3D"true" aria-label=3D"2. inherit" style=3D"border: solid 2px =
+#5f6368; height: 16px; width: 16px; border-radius: 50%;"><div style=3D"back=
+ground-color: #5f6368; border: solid 5px #5f6368; border-radius: 50%; margi=
+n: 3px; height: 0; width: 0;"></div></div></td><td style=3D"min-width: 8px;=
+"></td><td style=3D"word-break: break-word;">2. inherit</td></tr></table></=
+div><div style=3D"margin-top: 16px;"><table style=3D"color: #202124;font-fa=
+mily: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; =
+line-height: 20px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr=
+><td><div role=3D"radio" aria-checked=3D"false" aria-label=3D"3. extends" s=
+tyle=3D"border: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius=
+: 50%;"></div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-bre=
+ak: break-word;">3. extends</td></tr></table></div><div style=3D"margin-top=
+: 16px;"><table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial=
+,sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;color: #70=
+757a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" ari=
+a-checked=3D"false" aria-label=3D"4. override" style=3D"border: solid 2px #=
+9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div></td><td styl=
+e=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">4. overrid=
+e</td></tr></table></div></div></div><div style=3D"border: 1px solid #dadce=
+0; padding: 20px 12px;background-color: #fff; border-radius: 8px; margin-bo=
+ttom: 12px;margin-bottom: 12px;"><div style=3D"padding: 0 12px;"><h2 dir=3D=
+"auto" style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-ser=
+if;font-size: 16px; font-weight: 400; line-height: 24px;white-space: pre-wr=
+ap;margin: 0 0 16px;">16.=C2=A0=EC=9E=90=EB=B0=94=EC=8A=A4=ED=81=AC=EB=A6=
+=BD=ED=8A=B8=EC=97=90=EC=84=9C Math =EA=B0=9D=EC=B2=B4=EB=8A=94 =EC=96=B4=
+=EB=96=A4 =EC=9A=A9=EB=8F=84=EB=A1=9C =EC=82=AC=EC=9A=A9=EB=90=98=EB=8A=94=
+=EA=B0=80=EC=9A=94?<span style=3D"color: #d93025;" aria-label=3D"=ED=95=84=
+=EC=88=98 =EC=A7=88=EB=AC=B8"> *</span></h2></div><div style=3D"padding: 0 =
+12px;"><div style=3D"margin-top: 16px;"><table style=3D"color: #202124;font=
+-family: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 40=
+0; line-height: 20px;margin-top: 8px; table-layout: fixed;"><tr><td><div ro=
+le=3D"radio" aria-checked=3D"true" aria-label=3D"1. =EC=88=98=ED=95=99=EC=
+=A0=81=EC=9D=B8 =EC=97=B0=EC=82=B0=EC=9D=84 =EC=88=98=ED=96=89=ED=95=98=EA=
+=B8=B0 =EC=9C=84=ED=95=B4 =EC=82=AC=EC=9A=A9=EB=90=A9=EB=8B=88=EB=8B=A4." s=
+tyle=3D"border: solid 2px #5f6368; height: 16px; width: 16px; border-radius=
+: 50%;"><div style=3D"background-color: #5f6368; border: solid 5px #5f6368;=
+ border-radius: 50%; margin: 3px; height: 0; width: 0;"></div></div></td><t=
+d style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">1. =
+=EC=88=98=ED=95=99=EC=A0=81=EC=9D=B8 =EC=97=B0=EC=82=B0=EC=9D=84 =EC=88=98=
+=ED=96=89=ED=95=98=EA=B8=B0 =EC=9C=84=ED=95=B4 =EC=82=AC=EC=9A=A9=EB=90=A9=
+=EB=8B=88=EB=8B=A4.</td></tr></table></div><div style=3D"margin-top: 16px;"=
+><table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-se=
+rif;font-size: 14px; font-weight: 400; line-height: 20px;color: #70757a;mar=
+gin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checke=
+d=3D"false" aria-label=3D"2. =EB=AC=B8=EC=9E=90=EC=97=B4 =EC=B2=98=EB=A6=AC=
+=EB=A5=BC =EC=9C=84=ED=95=B4 =EC=82=AC=EC=9A=A9=EB=90=A9=EB=8B=88=EB=8B=A4.=
+" style=3D"border: solid 2px #9aa0a6; height: 16px; width: 16px; border-rad=
+ius: 50%;"></div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-=
+break: break-word;">2. =EB=AC=B8=EC=9E=90=EC=97=B4 =EC=B2=98=EB=A6=AC=EB=A5=
+=BC =EC=9C=84=ED=95=B4 =EC=82=AC=EC=9A=A9=EB=90=A9=EB=8B=88=EB=8B=A4.</td><=
+/tr></table></div><div style=3D"margin-top: 16px;"><table style=3D"color: #=
+202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font=
+-weight: 400; line-height: 20px;color: #70757a;margin-top: 8px; table-layou=
+t: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"false" aria-label=3D=
+"3. =EB=B0=B0=EC=97=B4=EC=9D=84 =EB=8B=A4=EB=A3=A8=EA=B8=B0 =EC=9C=84=ED=95=
+=B4 =EC=82=AC=EC=9A=A9=EB=90=A9=EB=8B=88=EB=8B=A4." style=3D"border: solid =
+2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div></td><td=
+ style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">3. =
+=EB=B0=B0=EC=97=B4=EC=9D=84 =EB=8B=A4=EB=A3=A8=EA=B8=B0 =EC=9C=84=ED=95=B4 =
+=EC=82=AC=EC=9A=A9=EB=90=A9=EB=8B=88=EB=8B=A4.</td></tr></table></div><div =
+style=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: Rob=
+oto,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-heig=
+ht: 20px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div=
+ role=3D"radio" aria-checked=3D"false" aria-label=3D"4. =EC=A1=B0=EA=B1=B4=
+=EB=AC=B8=EC=9D=84 =EC=B2=98=EB=A6=AC=ED=95=98=EA=B8=B0 =EC=9C=84=ED=95=B4 =
+=EC=82=AC=EC=9A=A9=EB=90=A9=EB=8B=88=EB=8B=A4." style=3D"border: solid 2px =
+#9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div></td><td sty=
+le=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">4. =EC=A1=
+=B0=EA=B1=B4=EB=AC=B8=EC=9D=84 =EC=B2=98=EB=A6=AC=ED=95=98=EA=B8=B0 =EC=9C=
+=84=ED=95=B4 =EC=82=AC=EC=9A=A9=EB=90=A9=EB=8B=88=EB=8B=A4.</td></tr></tabl=
+e></div></div></div></div><table align=3D"center" cellpadding=3D"0" cellspa=
+cing=3D"0" style=3D"max-width: 672px; min-width: 154px; border-collapse: se=
+parate; border-spacing: 0 0.2em;" width=3D"100%" role=3D"presentation"><tbo=
+dy><tr height=3D"24px"><td></td></tr><tr><td><a href=3D"https://docs.google=
+.com/forms?usp=3Dmail_form_link" style=3D"color: #424242; font-size: 13px;"=
+>=EB=82=98=EB=A7=8C=EC=9D=98 Google Forms =EB=A7=8C=EB=93=A4=EA=B8=B0</a></=
+td></tr><tr><td><a href=3D"https://docs.google.com/forms/u/0/d/e/1FAIpQLSc4=
+FAKP3CxH0UZQUsTXwvkjyG7Yk-grnw_5QhBvAeOCqKYi_g/reportabuse?source=3Dhttps:/=
+/docs.google.com/forms/d/e/1FAIpQLSc4FAKP3CxH0UZQUsTXwvkjyG7Yk-grnw_5QhBvAe=
+OCqKYi_g/viewform&amp;usp=3Dmail_receipt_abuse" target=3D"_blank" style=3D"=
+color: #424242; font-size: 13px;">=EC=95=85=EC=9A=A9=EC=82=AC=EB=A1=80 =EC=
+=8B=A0=EA=B3=A0</a></td></tr></tbody></table></div></body></html>
+--000000000000ee7351060f1efc2f--

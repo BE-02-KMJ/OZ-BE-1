@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>회원가입</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hahmlet&display=swap" rel="stylesheet">
+    <style>
+        *{
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        h3{
+            font-size: 23px;
+            font-weight: 900;
+        }
+
+        div{
+            font-family: 'Hahmlet', serif;
+            font-size: 20px;
+            font-weight: 550;
+            background-color: rgba(5%, 100%, 5%, 0.1);
+            line-height: 1.5em;
+            color: #222;
+            margin: 40px;
+            padding: 20px 20px 20px 20px;
+            text-align: center;
+            box-shadow: 10px 10px rgb(84, 134, 84), 20px 20px rgb(40, 87, 40), 30px 30px rgb(5, 44, 5);
+            border-radius: 50px;
+        }
+
+        .field{
+            width: 400px;
+            margin: auto;
+            padding: 0 20px;
+            margin-bottom: 20px;
+            height: 40px;
+        }
+
+        .radio{
+            margin: 20px 5px;
+        }
+
+        .number{
+            width: 100px;
+            height: 30px;
+            margin: 0px 0px 20px 0px;
+        }
+
+        a{
+            font-size: 15px;
+        }
+
+        .gen{
+            font-size: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="member">
+        <h3>OZ초격차 회원가입</h3>
+        <p class="title">이메일</p>
+        <input type="email" id="email" class="field" placeholder="이메일을 입력하세요."> <br>
+        <p class="title">비밀번호</p>
+        <input type="password" id="pw" class="field" placeholder="비밀번호를 입력하세요."> <br>
+        <p class="title">비밀번호 확인</p>
+        <input type="password" id="pw_check" class="field" placeholder="비밀번호를 다시 입력하세요."><br>
+        <p class="title">이름</p>
+        <input type="text" id="name" class="field" placeholder="이름을 입력하세요."> <br>
+        <p class="title">전화번호</p>
+        <input type="number" id="phone1" class="number" placeholder="010"> &nbsp; - &nbsp;
+        <input type="number" id="phone2" class="number" placeholder="1234"> &nbsp;- &nbsp;
+        <input type="number" id="phone3" class="number" placeholder="5678"> <br>
+        
+        <input type="number" id="numbers" placeholder="인증번호를 입력하세요.">
+        <input type="button" id="phone_check" value="인증번호 전송">
+        <a>03:00</a>
+        <br>
+        <p class="title">사는 지역</p>
+        <select class="field">
+            <option id="select" selected class="field">-지역을 선택하세요-</option>
+            <option value="Seoul">서울</option>
+            <option value="Gyeonggi">경기</option>
+            <option value="Busan">부산</option>
+            <option value="Daegu">대구</option>
+            <option value="Gwangju">광주</option>
+            <option value="Daejeon">대전</option>
+            <option value="Ulsan">울산</option>
+            <option value="Sejong">세종</option>
+            <option value="Gangwon">강원</option>
+            <option value="Chungcheong_N">충북</option>
+            <option value="Chungcheong_S">충남</option>
+            <option value="Jeolla_N">전북</option>
+            <option value="Jeolla_S">전남</option>
+            <option value="Gyeongsang_N">경북</option>
+            <option value="Gyeongsang_S">경남</option>
+            <option value="Jeju">제주</option>
+        </select>
+        <br>
+        <input type="radio" id="man" name="gen" class="radio">
+        <label for="man" class="gen">남</label> 
+        <input type="radio" id="woman" name="gen" class="radio">
+        <label for="woman" class="gen">여</label>
+        <input type="radio" id="nothing" name="gen" class="radio">
+        <label for="etc" class="gen">기타</label>
+        <br><br>
+        <input type="submit" value="가입하기" class="field">
+    </div>
+</body>
+</html>

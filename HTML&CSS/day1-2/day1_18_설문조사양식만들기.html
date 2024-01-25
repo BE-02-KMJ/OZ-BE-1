@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>설문 조사</title>
+</head>
+<body>
+
+    <header> <!--시멘틱 태그 1 : 머릿말-->
+        <h1>설문조사 양식</h1>
+        <p>모든 항복에 빠짐없이 체크해주십시오. </p>
+    </header>
+
+    <hr>
+
+    <main> <!--시멘틱 태그 2 : 본문-->
+
+        <form> <!--실제로 action과 method 속성 들어가야한다.-->
+            <fieldset>
+                <legend>개인정보</legend>
+                <label for="name">이름</label>
+                <input type="text" name="name" 
+                id="name" placeholder="본명(한글)을 입력하세요."
+                >
+                <br>
+                <label for="email">이메일</label>
+                <input type="email" name="email"
+                id="email" placeholder="example@email.com"
+                >
+            </fieldset>
+
+            <fieldset>
+                <legend>설문</legend>
+                <p>1. 연령대가 어떻게 되시나요?</p>
+                <input type="radio" id="teen" name="age">
+                <label for="teen">10대</label> 
+                <input type="radio" id="twenty" name="age">
+                <label for="twenty">20대</label>
+                <input type="radio" id="thirty" name="age">
+                <label for="thirty">30대</label>
+                <input type="radio" id="fourty" name="age">
+                <label for="fourty">40대</label>
+                <input type="radio" id="fifty" name="age">
+                <label for="fifty">50대</label>
+                <input type="radio" id="over" name="age">
+                <label for="over">60대 이상</label>
+                <!--입력 요소 식별자를 안 정해주면 여러개 선택 가능.-->
+                <!--name을 똑같이 맞춰줘야한다!-->
+
+                <p>2. 학원을 선택할 때 가장 중요하게 생각하는 것은 무엇입니까? (모두 고르시오.) </p>
+                <input type="checkbox" id="location" name="academy">
+                <label for="location">위치</label>
+                <input type="checkbox" id="cost" name="academy">
+                <label for="cost">학원비</label>
+                <input type="checkbox" id="teacher" name="academy">
+                <label for="teacher">강사</label>
+                <input type="checkbox" id="place" name="academy">
+                <label for="place">시설</label>
+
+                <p>3. 원하는 시간대가 어떻게 되시나요?</p>
+                <label for="start">⊙ 시작 시간: </label>
+                <input type="time" id="start" name="time" value="09:00" min="06:00" max="22:00">
+                <label for="end">⊙ 종료 시간: </label>
+                <input type="time" id="end" name="time" value="18:00" min="07:00" max="23:00">
+            </fieldset>
+
+            <fieldset>
+                <legend>기타 의견</legend>
+                <textarea cols="30" rows="5" name="comment">여러분의 의견을 적어주세요. </textarea>
+            </fieldset>
+
+            <input type="submit">
+        </form>
+
+    </main>
+
+    <hr>
+
+    <footer> <!--시멘틱 태그 3 : 맺음말-->
+        <p>입력하시느라 수고하셨습니다. </p>
+    </footer>
+
+</body>
+</html>
+<!--파트를 크게 먼저 잡고-->
+<!--그 내용을 채워가는 순서가 좋다.-->

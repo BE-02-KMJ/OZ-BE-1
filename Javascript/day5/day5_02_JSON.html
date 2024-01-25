@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+</head>
+<body>
+    
+    <script>
+        const meal = {
+            what: "마라엽떡",
+            who: "친구",
+            when: "지난주 점심"
+        }
+
+        console.log(typeof meal)    // object
+        console.log(meal)
+
+        // 자바스크립트를 파이썬으로
+        const Meal = `{
+            'what': "마라엽떡",
+            'who': "친구",
+            'when': "지난주 점심"
+        }`
+
+        console.log(typeof Meal)    // string
+        console.log(Meal)
+
+        let sm = JSON.stringify(meal)
+        console.log(sm)
+        console.log(JSON.parse(sm))
+    </script>
+</body>
+</html>

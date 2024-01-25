@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>'position' 태그</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            color: white;
+            background-color: orange;
+        }
+        .rel{
+            background-color: red;
+            position: relative; /* 원래 위치(문서 배치) 기준으로 이동*/
+            top: 50px;
+            left: 50px;
+
+        }
+        .abs{
+            position: absolute;
+            /* 이 요소가 absolute이기 때문에 2,3,4가 원래 문서 흐름(위쪽)으로 배치된다.*/
+            top: 50px;
+            right: 50px;
+            /* position 속성을 받은 상위 요소가 없기 때문에 화면 기준으로 이동*/
+        }
+        .scroll{
+            height: 2000px;
+        }
+        .fixed{
+            position: fixed;
+            right: 50px;
+            bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="abs">1</div>
+    <div class="rel">2</div>
+    <div class="scroll">3</div>
+    <div class="fixed">4</div>
+</body>
+</html>

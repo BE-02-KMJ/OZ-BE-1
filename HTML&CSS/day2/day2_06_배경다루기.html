@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>박스 모델(Box Model)_배경 스타일</title>
+
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            padding: 20px;
+            border: 20px double green;
+
+            /* background-color: bisque; */
+            background-clip: border-box;
+            background-image: url(images/고양이1.jpg);
+            background-size: 200px 200px;
+            background-repeat: no-repeat;
+            
+            background-origin: content-box;
+            background-position: center;
+            /* 여기서는 50px 50px가 center와 동일하다. */
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

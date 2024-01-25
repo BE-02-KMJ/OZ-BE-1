@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>Diary 📕</title>
+    <link href="day2_challenge4_diary.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="diary">
+        <div class="diary__head">
+            <h1>⭐오늘의 일기⭐</h1>
+            <div class="head__date">
+                2024년 1월 8일 월요일
+            </div>
+            <div class="head__title">
+                <span for="title">제목 : </span>
+                <input type="text" id="title" class="title">
+            </div>
+            <br>
+            <div class="head__weather">
+                <span class="weather">날씨 : </span>
+                <input type="radio" id="sun" name="weather" class="weather">
+                <label for="sun">☀️</label> 
+                <input type="radio" id="cloud_li" name="weather" class="weather">
+                <label for="cloud_li">⛅</label>
+                <input type="radio" id="cloud_ful" name="weather" class="weather">
+                <label for="cloud_ful">☁️</label>
+                <input type="radio" id="rainy" name="weather" class="weather">
+                <label for="rainy">🌧️</label>
+                <input type="radio" id="snow" name="weather" class="weather">
+                <label for="snow">🌨️</label>
+            </div>
+            <div class="head__feel">
+                <span class="feel">기분 : </span>
+                <label for="feel">😫</label>
+                <input type="range" id="feel" alt="feel" class="feel">
+                <label for="feel">😆</label>
+            </div>
+        </div>
+        <div class="diary__main">
+            <img class="main__img" src="images/무한도전짤.jpg" alt="무한도전 신나는 짤">
+            <br>
+            <textarea name="story" id="main" class="main__text" placeholder="오늘 당신의 하루는 어땠나요?"></textarea>
+        </div>
+        <div class="diary__footer">
+            <span>&copy; ming_ming_eee </span>
+        </div>
+    </div>
+</body>
+</html>

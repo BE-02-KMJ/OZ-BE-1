@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Object</title>
+    <style>
+        html{
+            text-align: center;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <button id="draw">추첨</button>
+    <p id="number"></p>
+
+    <script>
+        const button = document.getElementById("draw")
+        const p = document.getElementById("number")
+
+        console.log(Math)
+
+        // 1 ~ 11 사이 랜덤 숫자 반환. floor로 소수점 이하 제거해 반환.
+        let randomN = Math.floor(Math.random()*10 + 1)
+        console.log(randomN)
+
+        // Min_N ~ Max_N 사이 랜덤 숫자 반환.
+        const Max_N = 10;
+        const Min_N = 1;
+        let randomNum = Math.floor(Math.random()*Max_N + Min_N);
+        console.log(randomNum)
+
+        button.addEventListener("click", function(){
+            p.textContent = Math.floor(Math.random()*Max_N + Min_N)
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>선택자_심화편</title>
+    <style>
+        img[alt2]{ /* 속성 선택자 */
+            border: 5px dashed red;
+        }
+        [width *= "2"]{ /* 속성 선택자 */
+            border: 7px double skyblue;
+        } /* width 속성을 가진 것 중 2를 포함한 콘텐츠에 한에서 적용.*/
+        p > em{ /* 자식 요소 선택자 */
+            color: blueviolet;
+        } /* body em 과 동일. (하위 요소 선택자) */
+        #third + p{ /* 인접 형제 선택자 */
+            color: goldenrod;
+        }
+        #third ~ p{
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <img src="images/고양이1.jpg" width="200" alt1="고양이">
+    <img src="images/고양이1.jpg" width="150">
+    <img src="images/고양이1.jpg" width="180" alt2="고양이이" id="third">
+    <p>고양이(Felis catus)는 포유류 식육목 고양이과의 동물이다.</p>
+    <p>고양이의 신체적 특성과 습성은 다른 고양이과 동물들과 동일하여 빠른 반사신경, </p>
+    <p><em>탁월한 유연성, 날카로운 이빨, 넣고 꺼낼 수 있는 발톱</em> 등이 있다. </p>
+    <p>고양이는 매우 긴 수면 시간을 가지고 있어 하루 종일 자는 시간이 굉장히 많으나 </p>
+    <p>기본적으로 야생에서는 포식자 동물이라는 특성 상 박명박모성으로, 
+        해뜰녘과 해질녘에 주로 행동한다. </p>
+</body>
+</html>

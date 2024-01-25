@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>createElement & appendChild</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        for (let a = 1; a <= 3; a +=1){
+        const div = document.getElementById('container')
+
+        const box = document.createElement("div")
+        box.style.color = "blue"    // Javascript로 style 지정하기
+        box.style.width = "200px"
+        box.style.height = "200px"
+        box.textContent = "JavaScript로 sytle 추가가 가능하다니!"
+        
+        div.appendChild(box)
+        div.append("텍스트")
+        }
+        // console.log(div.appendChild(box))
+        // console.log(div.append(box))
+
+        console.log(typeof appendChild(box))
+    </script>
+</body>
+</html>

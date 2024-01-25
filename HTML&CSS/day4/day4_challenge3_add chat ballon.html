@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나만의 채팅방 🗯️</title>
+    <link href="day4_challenge3_chat.css" rel="stylesheet">
+    <link href="day4_challenge3_text.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <main class="chat-screen"> <!-- 친구 상태바 & 채팅 내용 부분 -->
+            <section class="chat-screen__bar">
+                <div class="user"> <!-- 친구 상태바 -->
+                    <div class="user__column"> <!-- 친구 프로필 -->
+                        <div class="user__pic">
+                            <img src="https://img1.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202105/22/koreadognews/20210522152933617uzcd.png" 
+                            class="user__pict">                            
+                        </div>
+                    </div>
+                    <div class="user__column"> <!-- 친구 이름 및 채팅방 인원수 -->
+                        <p class="user__nick">고영희🐈</p>
+                        <p class="user__count"> &nbsp; 2</p>
+                    </div>
+                </div>
+            </section>
+            <section class="chat-screen__chat">
+                <p class="chat-screen__date">2024년 01월 10일</p>
+                <ul class="chat-screen__texts"> <!--말풍선 항목 (상대방) -->
+                    <li class="text__y">집사님~!</li>
+                    <li class="text__y">저 밥 먹을 시간이에야옹~!</li>
+                    <li class="text__y">사료 달라옹! 🐱 </li>
+                </ul>
+                <ul class="chat-screen__texts"> <!--말풍선 항목 (나)) -->
+                    <li class="text__m">앗!!</li>
+                    <li class="text__m">지금 거의 다왔어! 금방 줄게~! 💁🏻‍♀️</li>
+                </ul>
+            </section>
+        </main>
+        
+        <form class="chat-form"> <!-- 채팅 입력창 부분 -->
+            <section class="chat-form__field">
+                <textarea class="chat-form__msg"></textarea>
+                <input type="submit" value="전송" class="chat-form__button">
+            </section>
+        </form>
+    </div>
+</body>
+</html>

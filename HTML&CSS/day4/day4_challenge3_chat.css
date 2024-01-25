@@ -1,0 +1,90 @@
+/* 전체적인 setting */
+*{
+    box-sizing: border-box;
+}
+html{
+    height: 100%; /* 화면 기준 100% 비율로 차게 */
+} 
+body{
+    height: 100%;
+    margin: 0; /* body가 가지고 있는 기본 margin 삭제*/
+}
+.container{
+    height: 100%;
+    background-color: #2E8B57;
+}
+
+/* 스크린(main) 크기 조정 */
+.chat-screen{
+    height: calc(100% - 120px); /* 전체 화면에서 채팅창 크기 만큼만 제외하고 넣기 */
+}
+
+/* 친구 상태바 조정 */
+.user{
+    background-color: rgb(230, 255, 232);
+    padding: 16px;
+    height: 130px;
+}
+.user__column{
+    float: left;
+}
+.user__pic{
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+    background-color: #2E8B57;
+    border-radius: 50px;
+    overflow: hidden;
+}
+.user__pict{
+    width: 100px;
+    position: relative;
+    top: -20px;
+}
+.user__nick, .user__count{
+    font-size: 25px;
+    margin: 10px;
+}
+.user__count{
+    font-size: 18px;
+    color: gray;
+}
+
+/* 채팅 입력창 조정 */
+.chat-form{
+    height: 120px;
+    background-color: white;
+}
+.chat-form__field{
+    height: 120px;
+}
+.chat-form__msg{
+    width: calc(100% - 120px); /* 전송 버튼을 제외한 나머지 채우기 */
+    height: 118px;
+    border: none;
+    resize: none;
+    font-size: 20px;
+    padding: 10px;
+    float: left;
+    position: relative;
+    top: 1px;
+}
+.chat-form__button{
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    background-color: #3a7955;
+    font-size: 18px;
+    padding: 10px;
+    float: right;
+}
+
+/* 추가 의사 클래스 작성 */
+.chat-form__button:active{
+    background-color: #1f3f2d;
+    color: white;
+}
+.chat-form__msg:focus{
+    outline: none;
+    background-color: whitesmoke;
+}

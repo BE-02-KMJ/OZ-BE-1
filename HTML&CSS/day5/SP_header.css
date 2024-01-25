@@ -1,0 +1,101 @@
+/* 상단 고정 */
+header.header{  
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: #FFFFFF;
+    color: #000000;
+}
+/* header 배치 */
+.header-content{  
+    width: 100%;
+    max-width: 85rem;
+    height: 4rem; /* 64px */
+    padding: 0.75rem 1rem;
+    margin: auto;
+
+    justify-content: space-between;
+}
+/* header 내부 배치 */
+.header-content__logo{
+    color: #C8386B;
+    font-size: 2rem;
+    font-weight: 900;
+
+    height: 1rem;
+    width: 12rem;
+    margin-right: 20px;
+    line-height: 40px;
+}
+.header-content__nav{
+    align-items: center;
+    padding: 0 2.5rem 0 0;
+    flex-grow: 1;
+    color: #505050;
+}
+.header-content__nav ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.header-content__nav li{
+    display: inline-block;
+    margin-right: 2rem;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+.header-content__nav ul li.active{
+    color: #C8386B;
+}
+/* 우측 flex 콘테이너 */
+.header-content__input{
+    justify-content: center;
+    align-items: center;
+}
+.header-content__input .search{
+    width: 18rem;
+    height: 2.5rem;
+    padding: 0.5rem 0.75rem;
+    background-color: #F2F2F2;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+.header-content__input .chat{
+    line-height: 1.3;
+    font-size: 1rem;
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #FFFFFF;
+    border: 0.5px solid #F2F2F2;
+    border-radius: 0.25rem;
+    font-weight: 600;
+}
+/* 우측 아이콘 2개의 미디어 쿼리 */
+.header-content__input .icon{
+    display: none;
+}
+.header-content__input input{
+    margin-right: 1rem;
+    border: none;
+    padding: 0;
+    font-size: 1.5rem;
+    background-color: transparent;
+}
+@media screen and (max-width: 1340px) {
+    .header-content__input .search{
+        display: none;
+    }    
+    .header-content__input .glass{
+        display: block;
+    }
+}
+@media screen and (max-width: 1084px) {
+    .header-content__input .chat, .header-content__nav{
+        display: none;
+    }    
+    .header-content__input .menu{
+        display: block;
+    }
+}

@@ -1,0 +1,77 @@
+/* 전체 세팅 */
+*{
+    font-family: 'Gowun Batang', serif;
+    box-sizing: border-box;
+}
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    margin: 0;
+}
+.diary{
+    height: 100%;
+    background-color: antiquewhite;
+}
+
+/* 내용 부분 조정 */
+.diary__head{
+    background-color: white;
+    padding: 20px;
+    height: 200px;
+    border: 10px double burlywood;
+    font-size: 17px;
+}
+h1{
+    text-align: center;
+}
+.head__date{
+    float: left;
+}
+.head__title{
+    float: right;
+    width: 300px;
+    text-align: left;
+}
+.title{
+    border: 1px solid rgb(211, 211, 211);
+    width: 250px;
+}
+.head__weather{
+    float: left;
+}
+.head__feel{
+    float: right;
+}
+
+.diary__main{
+    height: calc(100% - 250px);
+    padding: 20px;
+    border: 10px inset #e7a635;
+    text-align: center;
+}    
+.main__img{
+    width: calc(100%/2.5);
+    display: inline-block;
+    padding: 20px;
+    border: 5px solid #FFB400;
+}
+.main__text{
+    width: 100%;
+    height: calc(60% - 250px);
+    resize: none;
+    display: inline-block;
+    padding: 20px;
+    border: 3px dotted #FFB400;
+}
+
+.diary__footer{
+    height: 50px;
+    background-color: white;
+    text-align: center;
+}
+/* 추가 의사 클래스 * 의사 요소 */
+.title:focus{
+    background-color: floralwhite;
+}

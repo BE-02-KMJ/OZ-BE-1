@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day1.challenge3</title>
+    <style>
+        p{
+            padding: 0 5px;
+        }
+        #hobby{
+            color: palevioletred;
+            font-weight: 700;
+        }
+        #song{
+            color: rgb(102, 172, 205);
+        }
+        .animal{
+            color: brown;
+        }
+        .fruit{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="name"></h1>
+    <p id="hobby"></p>
+    <p id="song"></p>
+    <p class="animal"></p>
+    <p class="fruit"></p>
+
+    <script>
+        const nameElement = document.querySelector('#name')
+        let name = prompt("1. 당신의 이름은 무엇입니까?")
+        nameElement.textContent = name
+
+        const hobbyElement = document.querySelector('#hobby')
+        let hobby = prompt("2. 당신의 취미는 무엇입니까?")
+        hobbyElement.textContent = `취미는 ${hobby}입니다~`
+
+        document.querySelector('#song')
+        .textContent = `좋아하는 곡은 ${prompt("3. 좋아하는 곡은 무엇인가요?")}입니다~!`
+
+        const animalElement = document.querySelector('.animal')
+        let animal = prompt('4. 좋아하는 동물은 무엇입니까?')
+        animalElement.textContent = `좋아하는 동물은 ${animal}입니다 ㅎㅎㅎ`
+
+        document.querySelector('.fruit')
+        .textContent = `좋아하는 과일은 ${prompt('5. 좋아하는 과일은 무엇인가요?')}입니다~~`
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.carousel-wrapper {
+    width: 300vw;
+    height: 50vw;
+    transition: transform 0.5s;
+}
+.carousel-wrapper > .carousel {
+    display: flex;
+    float: left;
+    width: 100vw;
+    height: 50vw;
+}
+img {
+    width:50%;
+}
+
+.dark-mode{
+    background-color: #000000;
+    color: #FFFFFF;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성적 확인</title>
+
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        th, td{
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            border: 1px solid #000000;
+        }
+        th{
+            background-color: rgb(220, 255, 206);
+        }
+    </style>
+</head>
+<body>
+    <h2 id="title">성적 등급표</h2>
+    <table id="score">
+        <tr>
+            <th scope="col">점수</th>
+            <th scope="col">90점 이상</th>
+            <th scope="col">80 ~ 89점</th>
+            <th scope="col">70 ~ 79점</th>
+            <th scope="col">60 ~ 69점</th>
+            <th scope="col">60점 미만</th>
+        </tr>
+        <tr>
+            <th scope="col">학점</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+            <td>F</td>
+        </tr>
+    </table>
+    <div id="result"></div>
+
+    <script>
+        let result = document.getElementById('result');
+        let score = parseInt(prompt('중간고사 점수를 입력하세요. (0~100)'));
+        if (score < 60) {
+            const p = document.createElement('p');
+            p.textContent = `나의 중간고사 점수는 ${score}점, 학점은 'F'입니다.`;
+            result.append(p);
+        } else if (score < 70) {
+            const p = document.createElement('p');
+            p.textContent = `나의 중간고사 점수는 ${score}점, 학점은 'D'입니다.`;
+            result.append(p);
+        } else if (score < 80) {
+            const p = document.createElement('p');
+            p.textContent = `나의 중간고사 점수는 ${score}점, 학점은 'C'입니다.`;
+            result.append(p);
+        } else if (score < 90) {
+            const p = document.createElement('p');
+            p.textContent = `나의 중간고사 점수는 ${score}점, 학점은 'B'입니다.`;
+            result.append(p);
+        } else {
+            const p = document.createElement('p');
+            p.textContent = `나의 중간고사 점수는 ${score}점, 학점은 'A'입니다.`;
+            result.append(p);
+        }
+    </script>
+</body>
+</html>

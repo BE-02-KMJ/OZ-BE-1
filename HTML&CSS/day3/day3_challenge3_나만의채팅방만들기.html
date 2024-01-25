@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>나만의 채팅방 🗯️</title>
+    <link href="day3_challenge3_chat.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <main class="chat-screen"> <!-- 친구 상태바 & 채팅 내용 부분 -->
+            <section class="chat-screen__bar">
+                <div class="user"> <!-- 친구 상태바 -->
+                    <div class="user__column"> <!-- 친구 프로필 -->
+                        <div class="user__pic">
+                            <img src="images/고양이1.jpg" class="user__pict">                            
+                        </div>
+                    </div>
+                    <div class="user__column"> <!-- 친구 이름 및 채팅방 인원수 -->
+                        <p class="user__nick">고영희🐈</p>
+                        <p class="user__count"> &nbsp; 2</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <form class="chat-form"> <!-- 채팅 입력창 부분 -->
+            <section class="chat-form__field">
+                <textarea class="chat-form__msg"></textarea>
+                <input type="submit" value="전송" class="chat-form__button">
+            </section>
+        </form>
+    </div>
+</body>
+</html>

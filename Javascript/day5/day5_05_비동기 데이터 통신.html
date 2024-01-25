@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비동기 데이터 통신</title>
+</head>
+<body>
+    <button id="push">PUSH</button>
+    <hr />
+    <img src="" alt="강아지 사진">
+    
+    <script>
+        // 서버에 응답 보내기
+        const rqs = new XMLHttpRequest ()
+        const button = document.getElementById("push")
+        button.addEventListener("click", function(){
+            rqs.open("get", "https://dog.ceo/api/breeds/image/random")
+
+            // 서버로 부터 받은 응답 처리하기
+            rqs.addEventListener("load", function(){
+                const result = JSON.parse(rqs.response)
+                const img = document.querySelector("img")
+                img.src = result.message
+            })
+            rqs.send()            
+        })
+
+    </script>
+</body>
+</html>

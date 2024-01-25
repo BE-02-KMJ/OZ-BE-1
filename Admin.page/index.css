@@ -1,0 +1,49 @@
+*{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+html, body{
+    margin: 0;
+}
+.flex{
+    display: flex;
+}
+.title{
+    justify-content: space-between;
+}
+.updateDate{
+    position: relative;
+    top: 50px;
+    height: 30px;
+}
+.form-check{
+    margin-bottom: 15px;
+}
+form{
+    justify-content: space-around;
+}
+
+.dark-mode{
+    background-color: #000000;
+    color: #FFFFFF;
+}
+.page-nation{
+    margin-bottom: 30px;
+}
+.footer{
+    text-align: center;
+}
+.footer__container{
+    max-width: 45rem;
+    margin: auto;
+    color: #505050;
+    border-top: 1px solid #b6b6b6;
+    padding: 0 10px;
+}
+.footer__github{
+    display: block;
+    background-color: transparent;
+    margin-top: 10px;
+    font-size: 30px;
+    color: gray;
+}

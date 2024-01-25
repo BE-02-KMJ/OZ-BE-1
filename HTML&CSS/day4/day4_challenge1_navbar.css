@@ -1,0 +1,96 @@
+.noto-serif kr-black {
+    font-family: "Noto Serif KR", serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.noto-serif kr-bold {
+    font-family: "Noto Serif KR", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.noto-serif kr-semibold {
+    font-family: "Noto Serif KR", serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.noto-serif kr-medium {
+    font-family: "Noto Serif KR", serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.noto-serif kr-regular {
+    font-family: "Noto Serif KR", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.noto-serif kr-light {
+    font-family: "Noto Serif KR", serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.noto-serif kr-extralight {
+    font-family: "Noto Serif KR", serif;
+    font-weight: 200;
+    font-style: normal;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(173, 228, 137);
+    padding: 8px 12px;
+}
+body{
+    margin: 0;
+    background-color: rgb(241, 241, 241);
+}
+a {
+    text-decoration: none;
+    font-weight: 600;
+    color: black;
+    display: inline-block;
+    padding: 8px 30px;
+}
+.navbar__menu{
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding-left: 0;
+}
+a:hover{
+    background-color: green;
+}
+@media screen and (max-width: 700px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0;
+    }
+    .navbar__menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    } 
+    a {
+        width: 100%;
+        text-align: center;
+    }
+    .navbar__toggleBtn {
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+}
+.navbar__toggleBtn {
+    position: absolute;
+    right: 15px;
+    font-size: 20px;
+    display: none;
+}

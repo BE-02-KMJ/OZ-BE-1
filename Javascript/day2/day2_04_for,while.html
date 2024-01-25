@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for문</title>
+</head>
+<body>
+    
+    <script>
+        // for문
+        for (let i = 0; i < 5; i += 1) {
+            document.write(`for문 반복중입니다. ${i+1}번째 <br>`)
+        }
+
+        // while문
+        let i = 0
+        while (i < 5) {
+            document.write(`while 반복중이다! ${i+1}번째! <br>`)
+            i += 1;
+        }
+
+        while (confirm("반복 실행 할까요?")) {
+            
+        }
+
+        // 과제 마지막 문제
+        let x = 1;
+        let sum = 0;
+        while (x <= 50) {
+            if (x % 2 != 0) {
+                sum += x;
+                x +=1;
+            } else {
+                x +=1;
+            }
+        }
+        console.log(sum)
+    </script>
+</body>
+</html>

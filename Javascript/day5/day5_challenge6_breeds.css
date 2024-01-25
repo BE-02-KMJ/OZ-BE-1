@@ -1,0 +1,84 @@
+/* 기본 setting */
+@font-face {
+    font-family: 'CookieRun-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+    font-family: 'CookieRun-Regular';
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+html, body{
+    margin: 0;
+}
+
+/* 틀 잡기 */
+#container{
+    width: 100%;
+    max-width: 640px;
+    margin: auto;
+}
+header{
+    width: 100%;
+    max-width: 640px;
+    height: 60px;
+    border-bottom: 1px solid #00000033;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 0;
+}
+
+/* 검색창 부분 정렬 */
+.header__search{
+    display: flex;
+    align-items: center;
+}
+input, button, select{
+    height: 30px;
+    border: 0.5px solid gray;
+}
+button{
+    border-radius: 5px;
+}
+
+/* 사진 부분 정렬 */
+main{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 60px;
+    padding-top: 10px;
+}
+img{
+    width: 200px;
+    height: 200px;
+}
+
+/* 부가 기능 버튼 위치 고정 */
+.more, .tothetop{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    cursor: pointer;
+}
+.more{
+    color: #FFFFFF;
+    background-color: #CD8F6B;
+    left: 100px;
+    bottom: 100px;
+}
+.tothetop{
+    color: #FFFFFF;
+    background-color: #AB4A12;
+    right: 100px;
+    bottom: 100px;
+}

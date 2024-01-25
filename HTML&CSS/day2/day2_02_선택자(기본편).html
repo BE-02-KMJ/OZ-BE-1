@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>선택자_기본편</title>
+
+    <style>
+        /*1. 전체 선택자*/
+        *{
+            color: rgb(19, 187, 42);
+        }
+        /*2. 태그 선택자*/
+        li{
+            color: rgb(0, 174, 255);
+        }
+        /*우선 순위 발동!*/
+        li#belly{
+            color: blue;
+        }
+        /*3. 클래스 선택자*/
+        li.street{
+            color : purple;
+        }
+        /*4. 아이디 선택자*/
+        li#choreo{
+            color: orange;
+        }
+        /*5. 그룹 선택자*/
+        h2, p, li{
+            color: palevioletred;
+        }
+    </style>
+</head>
+<body>
+    <h2>춤의 장르</h2>
+    <p>춤에는 여러 종류의 장르가 존재합니다. </p>
+    <ul>
+        <li class="street">비보이</li>
+        <li class="street">팝핀</li>
+        <li class="street">크럼프</li>
+        <li class="street">락킹</li>
+        <li class="street">왁킹</li>
+        <li class="street">하우스</li>
+        <li class="street">크럼프</li>
+        <li class="street" id="choreo">코레오</li>
+        <li class="street">힙합</li>
+        <li id="belly">벨리</li>
+        <li id="jazz">재즈</li>
+    </ul>
+</body>
+</html>

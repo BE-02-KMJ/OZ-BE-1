@@ -1,0 +1,74 @@
+.chat-screen__chat{ /* 채팅 부분만 스크롤 하기 위해 section 새로 만듦. */
+    display: inline-block;
+    width: 100%;
+    height: calc(100% - 250px);
+    position: absolute;
+    top: 130px;
+    overflow: scroll;
+}
+.chat-screen__chat::-webkit-scrollbar{ /* 스크롤바가 보이지 않지만 기능은 함. */
+    display: none;
+}
+.chat-screen__date{
+    position: relative;
+    left: calc(100% / 2 - 100px);
+    text-align: center;
+    font-weight: 500;
+    color: azure;
+    width: 200px;
+    border: 1px solid rgba(0, 0, 0, 0.685);
+    background-color: rgba(54, 54, 54, 0.596);
+    border-radius: 10px;
+}
+.chat-screen__texts{
+    padding: 0;
+    list-style-type: none; /* list 기호 삭제 */
+}
+.chat-screen__texts > .text__y, .text__m{
+    background-color: rgb(239, 255, 238);
+    width: 280px;
+    height: 50px;
+    margin: 0 0 20px 20px;
+    padding: 10px;
+    border-radius: 10px;
+    line-height: 30px;
+}
+.text__y{
+    position: relative;
+}
+.text__m{
+    position: absolute;
+    right: 20px;
+}
+.text__m:nth-child(2){
+    position: absolute;
+    top: 335px;
+}
+.chat-screen__texts > .text__y::after{
+    content: "";
+    border-left: 16px solid transparent; /* transparent : 투명하게 */
+    border-bottom: 16px solid rgb(239, 255, 238);
+    position: absolute;
+    top: 30px;
+    left: -10px;
+}
+.chat-screen__texts > .text__m::after{
+    content: "";
+    border-top: 16px solid transparent; /* transparent : 투명하게 */
+    border-left: 16px solid rgb(239, 255, 238);
+    position: absolute;
+    top: 30px;
+    right: -10px;
+}
+.chat-screen__texts > .text__y:hover, .text__m:hover{
+    background-color: rgb(161, 196, 159);
+    transition: background-color 1500ms 200ms ease-in;
+}
+.chat-screen__texts > .text__y:hover::after{
+    border-bottom: 16px solid rgb(161, 196, 159);
+    transition: border-bottom 1500ms 200ms ease-in;
+}
+.chat-screen__texts > .text__m:hover::after{
+    border-left: 16px solid rgb(161, 196, 159);
+    transition: border-left 1500ms 200ms ease-in;
+}

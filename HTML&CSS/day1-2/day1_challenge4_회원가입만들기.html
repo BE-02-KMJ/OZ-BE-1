@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>회원 가입</title>
+</head>
+<body>
+    <h1>회원가입</h1>
+    <fieldset>
+        <legend>필수 입력 사항</legend>
+        <form method="post">
+            <label for="name">* 이름 (Name)</label>
+            <input type="text" id="name" name="introduce" placeholder="본명을 입력해주세요.">
+            <br>
+            <label for="id">* 아이디 (I.D)</label>
+            <input type="text" id="id" name="introduce" placeholder="영문, 숫자 6자리 이상"> &nbsp;
+            <input type="button" value="중복 확인">
+            <br>
+            <label for="pw">* 비밀번호 (P.W)</label>
+            <input type="password" id="pw" name="introduce" placeholder="영문, 숫자 조합 8자리 이상">
+            <br>
+            <label for="pwcheck">* 비밀번호 확인</label>
+            <input type="password" id="pwcheck" name="introduce" placeholder="비밀번호 재입력">
+            <br>
+            <label for="email_id">* 이메일 (e-mail)</label>
+            <input type="text" id="email_id" name="introduce" placeholder="아이디">@
+            <input type="text" id="email_address" name="introduce" placeholder="도메인">
+            <select class="select" title="이메일 도메인 주소 선택" onclick="setEmailDomain(this.value);return false;">
+                <option value="">-선택-</option>
+                <option value="naver.com">naver.com</option>
+                <option value="gmail.com">gmail.com</option>
+                <option value="hanmail.net">hanmail.net</option>
+                <option value="hotmail.com">hotmail.com</option>
+                <option value="nate.com">nate.com</option>
+                <option value="yahoo.com">yahoo.com</option>
+            </select>
+            <br>
+            <label for="phone">* 휴대번호 (phone)</label>
+            <input type="tel" id="phone" name="introduce" placeholder="010-****-****">
+        </form>
+        <br>
+        <input type="submit" value="가입하기"> &nbsp;
+        <input type="button" value="취소">
+    </fieldset>
+    <fieldset>
+        <legend>추가 입력 사항</legend>
+        <form>
+            <p>1. 취미 (다중 선택 가능)</p>
+            <input type="checkbox" id="coding" name="hobby">
+            <label for="coding">코딩</label>
+            <input type="checkbox" id="gym" name="hobby">
+            <label for="gym">운동</label>
+            <input type="checkbox" id="travel" name="hobby">
+            <label for="travel">여행</label>
+            <input type="checkbox" id="read" name="hobby">
+            <label for="read">독서</label>
+            <input type="checkbox" id="sing" name="hobby">
+            <label for="sing">노래하기</label>
+            <input type="checkbox" id="dance" name="hobby">
+            <label for="dance">춤추기</label>
+            <input type="checkbox" id="movie" name="hobby">
+            <label for="movie">영화보기/OTT보기</label>
+
+            <p>2. 성별</p>
+            <input type="radio" id="man" name="gen">
+            <label for="man">남</label> 
+            <input type="radio" id="woman" name="gen">
+            <label for="woman">여</label>
+            <input type="radio" id="nothing" name="gen">
+            <label for="nothing">무</label>
+
+            <p>3. 연령대</p>
+            <input type="radio" id="teen" name="age">
+            <label for="teen">10대</label> 
+            <input type="radio" id="twenty" name="age">
+            <label for="twenty">20대</label>
+            <input type="radio" id="thirty" name="age">
+            <label for="thirty">30대</label>
+            <input type="radio" id="fourty" name="age">
+            <label for="fourty">40대</label>
+            <input type="radio" id="fifty" name="age">
+            <label for="fifty">50대</label>
+            <input type="radio" id="over" name="age">
+            <label for="over">60대 이상</label>
+        </form>
+    </fieldset>
+</body>
+</html>

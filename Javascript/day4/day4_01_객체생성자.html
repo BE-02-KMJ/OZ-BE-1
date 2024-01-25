@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체를 만드는 생성자</title>
+</head>
+<body>
+    
+    <script>
+        function BestSinger() {
+            this.name = "BTS"
+            this.member = "RM, Suger, Jin, J-Hope, V, Jimin, Jungkook"
+            this.singing = function() {
+                console.log("눈꽃이 떨어져요~ 또 조금씩 멀어져요~ 보고 싶다~")
+            }
+        }
+
+        const bts = new BestSinger()
+        console.log(bts.name)
+        console.log(bts.member)
+        bts.singing()
+
+        // 매개변수 포함한 생성자
+        function Singer(name, member) {
+            this.name = name;
+            this.member = member;
+        }
+
+        const 노을 = new Singer("노을", "강균성, 전우성, 이상곤, 나성호")
+        console.log(노을.name)
+        console.log(노을.member)
+
+        const blackPink = new Singer("블랙핑크", "제니, 지수, 로제, 리사")
+        console.log(blackPink.name)
+        console.log(blackPink.member)
+    </script>
+</body>
+</html>

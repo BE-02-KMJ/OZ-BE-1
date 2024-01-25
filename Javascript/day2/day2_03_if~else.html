@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if, else</title>
+</head>
+<body>
+    <h1></h1>
+    <p></p>
+
+    <script>
+        const h1 = document.querySelector('h1')
+        const p = document.querySelector('p')
+
+        const isThere = confirm("요금 조회를 시작하시겠습니까?")
+
+        if (isThere) {
+            h1.textContent = "당신이 내야할 버스 요금은?"
+        }
+
+        const age = parseInt(prompt("당신의 나이는?"))
+
+        if (age >= 20) {
+            p.textContent = '당신은 성인입니다. 1250원 입니다.'
+        } else if (age >= 8) {
+            p.textContent = '당신은 청소년입니다. 750원 입니다.'
+        } else {
+            p.textContent = '당신은 아동입니다. 0원(무료) 입니다.'
+        }
+    </script>
+</body>
+</html>

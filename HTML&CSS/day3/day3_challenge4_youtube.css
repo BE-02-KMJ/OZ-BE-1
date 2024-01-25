@@ -1,0 +1,298 @@
+/* 아이콘 모양을 일일이 이미지로 넣기 힘들거 같아서 이모지로 넣었습니다. */
+/* 전체 기본 세팅 */
+*{
+    font-family: Roboto, 'Gothic A1', Arial, sans-serif;
+    box-sizing: border-box;
+    background-color: rgb(10, 10, 10);
+    color: white;
+    overflow-y: auto;
+}
+html{
+    height: 100%; /* 화면 기준 100% 비율로 차게 */
+} 
+body{
+    height: 100%;
+    margin: 0; /* body가 가지고 있는 기본 margin 삭제*/
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    display: block;
+}
+
+/* 고정된 side bar setting */
+.side{
+    float: left;
+    position: fixed;
+    width: 60px;
+    height: 100%;
+    text-align: center;
+}
+[class *= side__]{
+    margin: 20px 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.side__t{
+    display: block;
+    font-size: 10px;
+    margin: 0;
+}
+
+/* 고정된 상단 bar setting */
+.head{
+    position: fixed;
+    left: 60px;
+    width: 100%;
+    height: 120px;
+}
+/* 첫번째 */
+.head__first{
+    position: fixed;
+    left: 60px;
+    width: 100%;
+    height: 60px;
+}
+.head__logo{
+    display: block;
+    position: absolute;
+    top: -335px;
+    left: -585px;
+    transform: scale(0.07, 0.07);
+}
+.head__search{
+    position: absolute;
+    left: 160px;
+    width: calc(100% - 440px);
+}
+.search_bar{
+    position: relative;
+    margin: 5px 0;
+    width: calc(100% - 100px);
+    height: 40px;
+    border: 1px solid gray;
+    border-radius: 20px 0 0 20px;
+    padding: 10px 0 10px 15px;
+    font-size: 16px;
+}
+.search_button{
+    position: relative;
+    top: 3px;
+    width: 50px;
+    height: 40px;
+    font-size: 20px;
+    background-color: gray;
+    border: none;
+    border-radius: 0 20px 20px 0;
+}
+.head__speak{
+    position: absolute;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    padding: 5px;
+    font-size: 20px;
+    border: 1px solid gray;
+    border-radius: 25px
+}
+.head__make{
+    position: absolute;
+    right: 190px;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    padding: 5px;
+    font-size: 20px;
+    border: 1px solid gray;
+    border-radius: 25px
+}
+.head__alarm{
+    position: absolute;
+    right: 140px;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    padding: 5px;
+    font-size: 20px;
+    border: 1px solid gray;
+    border-radius: 25px
+}
+.head__profile{
+    position: absolute;
+    right: 90px;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    padding: 5px;
+    font-size: 20px;
+    border: 1px solid gray;
+    border-radius: 25px;
+    overflow: hidden;
+}
+.head__profile > img{
+    position: relative;
+    top: -8px;
+    right: 5px;
+}
+/* 두번째 */
+.head__second{
+    position: fixed;
+    top: 50px;
+    left: 70px;
+    width: 100%;
+    height: 60px;
+    overflow: hidden;
+}
+.head__second > [class *= head__]{
+    position: relative;
+    display: inline-block;
+    height: 40px;
+    margin: 10px;
+    padding: 9px 10px;
+    font-size: 15px;
+    border: 1px solid #2B2B2B;
+    border-radius: 10px;
+    background-color: #2B2B2B;
+}
+.head__second > [class *= head__]:hover{
+    background-color: #505050;
+}
+.head__second > [class *= head__]:active{
+    background-color: white;
+    color: black;
+}
+
+/* main setting */
+.main{
+    position: relative;
+    top: 120px;
+    left: 60px;
+    width: 100%;
+    height: calc(100% - 120px);
+    overflow-x: hidden;
+}
+/* video 부분 setting */
+.main__video{
+    width: 100%;
+    height: 690px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.video{
+    position: relative;
+    margin: 10px 0px;
+    display: inline-block;
+    width: 400px;
+    height: 320px;
+}
+.video > .video__sumnail{
+    width: 380px;
+    border: none;
+    border-radius: 10px;
+}
+.video > .video__profile{
+    width: 40px;
+    margin: 5px;
+    border: none;
+    border-radius: 20px;
+}
+.video__title{
+    display: -webkit-inline-box; /* 여기서 부터 */
+    overflow: hidden;
+    text-overflow: ellipsis; /* 여러 줄로 보여주는 생략 긴 글 넣는 방법... */
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; /* 여기까지 */
+    resize: none;
+    position: absolute;
+    margin: 0;
+    padding: 5px;
+    border: none;
+    width: 310px;
+    height: 50px;
+    line-height: 21px;
+    font-size: 16px;
+}
+.video__user{
+    position: relative;
+    top: 15px;
+    left: 6px;
+    font-size: 12px;
+    color: #aaaaaa;
+}
+.video__view{
+    position: relative;
+    top: 15px;
+    left: 60px;
+    font-size: 12px;
+    color: #aaaaaa;
+}
+/* video 부분 setting */
+.main__shorts{
+    position: relative;
+    width: 100%;
+    height: 700px;
+}
+.shorts__head{
+    position: relative;
+    width: 100%;
+    height: 80px;
+}
+.shorts__logo{
+    display: inline-block;
+    position: relative;
+    top: -130px;
+    left: -250px;
+    transform: scale(0.25);
+    margin: 0;
+}
+.shorts__X{
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    left: calc(100% - 80px);
+    font-size: 25px;
+}
+.shorts__field{
+    position: relative;
+    width: 100%;
+    height: 620px;
+    white-space:nowrap; 
+    overflow-x: auto;
+}
+.shorts{
+    display: inline-block;
+    width: 270px;
+    overflow: hidden;
+}
+.shorts__sumnail{
+    width: 260px;
+    border: none;
+    margin: 10px;
+    border-radius: 10px;
+}
+.shorts__title{
+    display: -webkit-inline-box; /* 여기서 부터 */
+    overflow: hidden;
+    text-overflow: ellipsis; /* 여러 줄로 보여주는 생략 긴 글 넣는 방법... */
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: horizontal; /* 여기까지 */
+    resize: none;
+    position: relative;
+    top: -5px;
+    left: 8px;
+    margin: 0;
+    padding: 5px;
+    border: none;
+    width: 230px;
+    height: 50px;
+    line-height: 21px;
+    font-size: 16px;
+}
+.shorts__view{
+    position: relative;
+    top: 15px;
+    left: -220px;
+    font-size: 14px;
+    color: #aaaaaa;
+}
