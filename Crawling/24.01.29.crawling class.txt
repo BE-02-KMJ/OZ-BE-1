@@ -1,0 +1,11 @@
+- user agent 는 기종마다 상이하므로 구글링을 통해 얻을 수 있다.
+또는 개발자 도구(F12) Network에서 최상단에 페이지주소로 되어있는 정보를 누르면 User-Agent에서 확인할 수 있다.
+
+- 동적 크롤링
+1. 원하는 페이지의 url 입력 (변수로 저장)
+2. get으로 서버에게 페이지의 자원(resource) 요청 
+3. time을 설정해서 페이지가 나타나는 시간 설정.
+4. html 파일 얻고 (driver.page_source) BeautifulSoup으로 파싱.
+(셀레니움 자체에는 파싱하는 기능이 없어 BeautifulSoup을 이용해서 )
+5. 원하는 정보의 id를 찾아서 query 변수로 넣어줌.
+(select_one은 class, id, 태그 찾아준다.)
