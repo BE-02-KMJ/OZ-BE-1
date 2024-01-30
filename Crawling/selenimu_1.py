@@ -16,3 +16,5 @@ soup = BeautifulSoup(html, "html.parser")
 
 query = soup.select_one('#query')
 print(query)
+
+driver.quit()
