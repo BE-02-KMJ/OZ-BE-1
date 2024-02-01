@@ -1,0 +1,12 @@
+USE testdatabase;
+-- SELECT * FROM users;
+-- SELECT age FROM users;
+-- SELECT DISTINCT age FROM users;
+-- SELECT age, age * 100 FROM users;
+-- SELECT age, age * 100 AS age100 FROM users;
+-- SELECT * FROM users ORDER BY age ASC, user_id DESC;
+-- SELECT * FROM users WHERE age >= 25;
+-- SELECT * FROM users WHERE age BETWEEN 20 AND 33 LIMIT 1;
+-- SELECT age, COUNT(*) AS user_count FROM users GROUP BY age;
+-- SELECT username, age, CASE WHEN age >= 30 THEN '성인' ELSE '미성년자' END AS age_group FROM users;
+SELECT username, age, ROW_NUMBER() OVER (ORDER BY age DESC) AS 'rank' FROM users;
