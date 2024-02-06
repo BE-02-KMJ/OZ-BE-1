@@ -1,0 +1,22 @@
+{
+    "_id" : ObjectId("65c18e8912a6616c2a03a0c9"),
+    "name" : "Alice",
+    "age" : NumberInt(30),
+    "address" : [
+        "123 Maple St",
+        "124 Maple St",
+        "125 Maple St"
+    ]
+}
+{
+    "_id" : ObjectId("65c1931a12a6616c2a03a0cb"),
+    "name" : "Charlie",
+    "age" : NumberInt(35),
+    "address" : "789 Pine St"
+}
+{
+    "_id" : ObjectId("65c1947012a6616c2a03a0cd"),
+    "name" : "Charlie",
+    "age" : NumberInt(35),
+    "city" : "California"
+}
