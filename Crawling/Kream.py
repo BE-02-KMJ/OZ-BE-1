@@ -5,7 +5,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from bs4 import BeautifulSoup
 import time
-import urllib.request
+from urllib.request import urlopen
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 # 기본 옵션
 options = Options()
@@ -60,8 +62,13 @@ for i in items :
         print()
         num += 1
     
-    # 5. 상품 사진 저장하기
-    images = driver.find_element(By.CSS_SELECTOR,".image.full_width").get_attribute("src")
-    urllib.request.urlretrieve(images, "img.png")
+# 5. 상품 사진 url 가져오기.
+WebDriverWait(driver, 20).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, '.picture.product_img > source')))
+imgs = driver.find_elements(By.CSS_SELECTOR,'.picture.product_img > source')
+imgs_url = []
+for i in imgs:
+    src = i.get_attribute('srcset')
+    imgs_url.append(src)
+print(imgs_url)
 
 driver.quit()
