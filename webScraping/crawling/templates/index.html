@@ -55,12 +55,19 @@
         font-size: 30px;
         color: gray;
     }
+
+    tbody{
+      text-align: center;
+    }
+    .col{
+      text-align: center;
+    }
     </style>
 </head>
 <body>
     <div class="container mt-3">
       <header class="header">
-        <div class="form-check form-switch form-check-reverse" id="sex">
+        <div class="form-check form-switch form-check-reverse">
           <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse" onclick="darkMode()">
           <label class="form-check-label" for="flexSwitchCheckReverse">Light ON/OFF</label>
         </div>
@@ -69,10 +76,6 @@
         <div class="title flex">
           <h3 class="mt-5 mb-3">신규 등록 상품</h3>
           <span class="updateDate"></span>
-        </div>
-        <div class="form-check form-switch form-check-reverse">
-          <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse">
-          <label class="form-check-label" for="flexSwitchCheckReverse">Male/Female</label>
         </div>
         <form class="row gx-3 gy-2 align-items-center flex">
           <div class="col-sm-3">
@@ -99,20 +102,19 @@
               <!-- 열의 속성값을 나타내는 코드를 작성해주세요 (예 : 카테고리, 브랜드, 상품명, 가격) -->
               <tr>
                 <th><input class="form-check-input" type="checkbox" id="chkAll" value="" aria-label="..."></th>
-                <th scope="col">카테고리(Category)</th>
-                <th scope="col">브랜드(Brand)</th>
-                <th scope="col">상품명(Product)</th>
-                <th scope="col">가격(Price)</th>
+                <th scope="col" class="col">상품(Item)</th>
+                <th scope="col" class="col">브랜드(Brand)</th>
+                <th scope="col" class="col">상품명(Product)</th>
+                <th scope="col" class="col">가격(Price)</th>
               </tr>
             </thead>
             <tbody id="data-table">
               <!-- 추후 크롤링한 데이터가 들어가는 자리 -->
-              
             </tbody>
           </table>
         </div>
       </div>
-      <div class="page-nation"> <!-- 페이지 네이션 코드를 넣어주세요 -->
+      <div class="page-nation" id="pagination"> <!-- 페이지 네이션 코드를 넣어주세요 -->
         <nav aria-label="Page navigation example">
           <ul class="pagination justify-content-center">
             <li class="page-item">
@@ -169,24 +171,98 @@
 
         // 크롤링한 데이터를 아래와 같은 형태의 객체 배열로 가정합니다.
         // 추후 데이터베이스에 있는 데이터를 쿼리문으로 불러 올 수 있게 쿼리르 작성해 볼 수 있음
-        let data = [
-            { checkbox: '', category: "상의", brand: 'Supreme', product: '슈프림 박스로고 후드티', price: '390,000' },
-            { checkbox: '', category: "하의", brand: 'DIESEL', product: '디젤 트랙 팬츠', price: '188,000' },
-            { checkbox: '', category: "신발", brand: 'Nike', product: '에어포스 1', price: '137,000' },
-            { checkbox: '', category: "패션잡화", brand: 'Music&Goods', product: '빵빵이 키링', price: '29,000' },
-            // ...
-        ];
-
+        let before_parse = '{{ data_list }}'.replace(/&#34;/g, '"');
+        let data_list = JSON.parse(before_parse);
         let dataTable = document.getElementById('data-table');
+        // document.getElementById('data-table').innerText = data_list;
+        // dataTable.innerText = data_list[0][0];
 
-        data.forEach((item) => {
+        // data_list.forEach((item) => {
+        //       const row = dataTable.insertRow();
+        //       row.insertCell(0).innerHTML = `<td><input type="checkbox" name="check"></td>`;
+        //       row.insertCell(1).innerHTML = '<img src="${item[0]}>'
+        //       row.insertCell(2).innerHTML = item[1];
+        //       row.insertCell(3).innerHTML = item[2];
+        //       row.insertCell(4).innerHTML = item[3];
+        //   });
+
+        // 페이지 네이션 코드
+        const limit = 10; // 한 페이지에 표시할 아이템 수
+        let currentPage = 1; // 현재 페이지 번호
+        const totalCount = data_list.length; // 전체 아이템 수
+        const totalPage = Math.ceil(totalCount / limit); // 전체 페이지 수
+        const maxPageButtons = 5; // 최대 페이지 네이션 버튼 수
+
+        // 페이지 이동 함수
+        function goToPage(page) {
+          currentPage = page;
+
+          // 테이블 데이터 업데이트
+          dataTable.innerHTML = '';
+          for (let i = (page - 1) * limit; i < page * limit && i < totalCount; i++) {
             const row = dataTable.insertRow();
-            row.insertCell(0).innerHTML = `<td><input type="checkbox" name="check"></td>`;
-            row.insertCell(1).innerHTML = item.category;
-            row.insertCell(2).innerHTML = item.brand;
-            row.insertCell(3).innerHTML = item.product;
-            row.insertCell(4).innerHTML = item.price;
-        });
+            row.innerHTML = `
+              <td><input type="checkbox" name="check"></td>
+              <td><img src="${data_list[i][0]}"></td>
+              <td>${data_list[i][1]}</td>
+              <td>${data_list[i][2]}</td>
+              <td>${data_list[i][3]}</td>
+            `;
+          }
+
+          // 페이지네이션 업데이트
+          let pagination = document.querySelector('.pagination');
+          pagination.innerHTML = '';
+
+          // 이전 버튼
+          if (currentPage > 1) {
+            let prevPageItem = document.createElement('li');
+            prevPageItem.className = 'page-item';
+            let prevPageLink = document.createElement('a');
+            prevPageLink.className = 'page-link';
+            prevPageLink.href = '#';
+            prevPageLink.textContent = 'Previous';
+            prevPageLink.onclick = function () {
+              goToPage(currentPage - 1);
+            };
+            prevPageItem.appendChild(prevPageLink);
+            pagination.appendChild(prevPageItem);
+          }
+
+          // 페이지 번호
+          let startPage = Math.max(1, currentPage - Math.floor(maxPageButtons / 2));
+          let endPage = Math.min(totalPage, startPage + maxPageButtons - 1);
+          for (let i = startPage; i <= endPage; i++) {
+            let pageItem = document.createElement('li');
+            pageItem.className = 'page-item' + (i === currentPage ? ' active' : '');
+            let pageLink = document.createElement('a');
+            pageLink.className = 'page-link';
+            pageLink.href = '#';
+            pageLink.textContent = i;
+            pageLink.onclick = function () {
+              goToPage(i);
+            };
+            pageItem.appendChild(pageLink);
+            pagination.appendChild(pageItem);
+          }
+
+          // 다음 버튼
+          if (currentPage < totalPage) {
+            let nextPageItem = document.createElement('li');
+            nextPageItem.className = 'page-item';
+            let nextPageLink = document.createElement('a');
+            nextPageLink.className = 'page-link';
+            nextPageLink.href = '#';
+            nextPageLink.textContent = 'Next';
+            nextPageLink.onclick = function () {
+              goToPage(currentPage + 1);
+            };
+            nextPageItem.appendChild(nextPageLink);
+            pagination.appendChild(nextPageItem);
+          }
+        }
+        // 첫 페이지 로드
+        goToPage(currentPage);
 
         document.addEventListener("DOMContentLoaded", function() {
             var chkAll = document.getElementById("chkAll");

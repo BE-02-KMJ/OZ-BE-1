@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 import pymysql
+import json
 
 app = Flask(__name__)
 
@@ -12,10 +13,11 @@ db = pymysql.connect (
 )
 
 cur = db.cursor()
-sql = "SELECT * FROM kream"
+sql = "SELECT * FROM kream_item"
 cur.execute(sql)
 
 kream_data = cur.fetchall()
+kream_data = json.dumps(kream_data)
 
 @app.route('/')
 def index():

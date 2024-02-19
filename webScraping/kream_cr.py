@@ -11,7 +11,7 @@ from urllib.request import urlopen
 import time
 
 # 기본 옵션
-user = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+user = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 options = Options()
 options.add_argument(f'User-Agent={user}')
 options.add_experimental_option("detach", True)
@@ -87,4 +87,4 @@ def execute_query(connection, query, args=None):
             connection.commit()
 
 for i in item_list :
-    execute_query(connection, "INSERT INTO kream (img, brand, product_name, price) VALUES (%s, %s, %s, %s)", (i[0],i[1],i[2],i[3]))
+    execute_query(connection, "INSERT INTO kream_item (img, brand, product_name, price) VALUES (%s, %s, %s, %s)", (i[0],i[1],i[2],i[3]))
