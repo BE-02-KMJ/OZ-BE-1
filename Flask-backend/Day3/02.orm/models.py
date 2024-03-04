@@ -10,8 +10,7 @@ class User(db.Model):
     name = db.Column(db.String(100), unique=True, nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     boards = db.relationship('Board', back_populates='author', lazy='dynamic')  # 역참조
-
-	# address = db.Column(db.String(120), unique=True, nullable=False)  # 추가된 필드
+    address = db.Column(db.String(120), unique=True, nullable=False)  # 추가된 필드
 
 class Board(db.Model):
     __tablename__ = "boards"

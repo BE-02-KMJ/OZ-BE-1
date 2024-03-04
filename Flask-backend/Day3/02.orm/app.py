@@ -3,13 +3,14 @@ from flask_smorest import Api
 from flask_sqlalchemy import SQLAlchemy
 from db import db
 from models import User, Board
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:alswjd6984!@localhost/oz'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False    # 객체가 변경될 때마다 Tracking을 할 건지 → Nope! 메모리 부하 多
-
 db.init_app(app)
+migrate = Migrate(app, db)
 
 # blueprint 설정 및 등록
 app.config["API_TITLE"] = "My API"
