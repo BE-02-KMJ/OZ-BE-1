@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram API Test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>Instagram API Test</h1>
+
+    <button onclick="fetchUsers()">Fetch Users</button>
+    <div id="users-list"></div>
+
+    <h2>Create User</h2>
+    <input type="text" id="name" placeholder="Username" />
+    <button onclick="addUser()">Create User</button>
+
+    <h2>Add Post to User</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="text" id="post" placeholder="Post Title" />
+    <button onclick="addPost()">Add Post</button>
+
+    <h2>Delete User</h2>
+    <input type="text" id="username-delete" placeholder="Username" />
+    <button onclick="deleteUser()">Delete User</button>
+
+    <script>
+        function fetchUsers() {
+            $.get("/users", function(data) {
+            let users = data.users;
+            let html = '';
+
+            for (let user of users) {
+            html += `<p>${user.username} has ${user.posts.length} post(s)</p>`;
+            html += '<ul>';
+            for (let post of user.posts) {
+                html += `<li>Title: ${post.title}, Likes: ${post.likes}</li>`;
+            }
+            html += '</ul>';
+            }
+
+            $("#users-list").html(html);
+        });
+        }
+
+        function addUser() {
+            let name = $("#name").val();
+
+            $.ajax({
+            url: '/users',
+            type: 'POST',
+            data: JSON.stringify({username: name}),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            async: false,
+            success: function(msg) {
+                alert('User created');
+                fetchUsers();  // 사용자 정보 업데이트
+            }
+            });
+        }
+
+        function addPost() {
+            let username = $("#username").val();
+            let post = $("#post").val();
+
+            $.ajax({
+            url: '/users/post/' + username,
+            type: 'POST',
+            data: JSON.stringify({title: post, likes: 0}),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            async: false,
+            success: function(msg) {
+                alert('Post added');
+                fetchUsers();  // 사용자 정보 업데이트
+            }
+            });
+        }
+
+        function deleteUser() {
+            let username = $("#username-delete").val();
+
+            $.ajax({
+            url: '/users/' + username,
+            type: 'DELETE',
+            success: function(result) {
+                alert('User deleted');
+            }
+            });
+        }
+    </script>
+  </body>
+</html>

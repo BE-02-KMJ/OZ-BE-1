@@ -29,7 +29,7 @@ api.register_blueprint(user_blp)
 
 # html 코드로 flask-mysql test
 from flask import render_template
-@app.route('/users_interface')
+@app.route('/')
 def users_interface():
     return render_template('users.html')
 
