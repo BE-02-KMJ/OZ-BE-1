@@ -21,7 +21,7 @@ users = [
 @app.get("/")
 def index():
     # 모든 사용자 정보를 JSON 형태로 반환
-    return render_template('index.html')
+    return render_template('app_insta.html')
 
 @app.get("/users")
 def get_users():
