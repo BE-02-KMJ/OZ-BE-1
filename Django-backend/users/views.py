@@ -5,6 +5,8 @@ from rest_framework.exceptions import NotFound
 from .serializers import MyInfoUserSerializer
 from django.contrib.auth.password_validation import validate_password
 from rest_framework.exceptions import ParseError    # 비밀번호 규칙 검증 (8자리 이상 등)
+from rest_framework.authentication import TokenAuthentication   # 사용자 인증
+from rest_framework.permissions import IsAuthenticated  # 권한 부여
 
 # Create your views here.
 # api/v1/users [POST] → 유저 생성 API
@@ -32,6 +34,10 @@ class Users(APIView):
 
 # api/v1/users/myinfo [GET,Put] → 유저 프로필 업데이트
 class MyInfo(APIView):
+    # 인증 및 권한
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
     # read
     def get(self, request):
         user = request.user
