@@ -27,19 +27,26 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
-INSTALLED_APPS = [
+DJANGO_SYSTEM_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "boards.apps.BoardsConfig", # boards app의 class 추가.
-    "users.apps.UsersConfig",
 ]
+
+CUSTOM_USER_APPS = [
+    "boards.apps.BoardsConfig", # boards app의 class 추가.
+    "users.apps.UsersConfig",   # users app의 class 추가.
+    "feeds.apps.FeedsConfig",   # feeds app의 class 추가.
+    "reviews.apps.ReviewsConfig", # reviews app의 class 추가.
+    "rest_framework",
+]
+
+INSTALLED_APPS = DJANGO_SYSTEM_APPS + CUSTOM_USER_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

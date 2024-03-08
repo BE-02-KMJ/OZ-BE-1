@@ -12,11 +12,13 @@ from django.contrib.auth.admin import UserAdmin
 
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
-    list_display = ("username", "email", "is_business", "grade")
+    model = User
+    list_display = ("pk", "username", "email", "is_business", "grade")
+    list_display_links = ("username", "email")
     fieldsets = (
         (None, {"fields": ("username", "password")}),
-        (("Personal info"), {"fields": ("first_name", "last_name", "email")}),
-        (("Important dates"), {"fields": ("last_login", "date_joined")}),
+        (("Personal info"), {"fields": ("email", "grade", "is_business")},
+         ),
         # (
         #     ("Permissions"),
         #     {
