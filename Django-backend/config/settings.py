@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,7 +45,8 @@ CUSTOM_USER_APPS = [
     "feeds.apps.FeedsConfig",   # feeds app의 class 추가.
     "reviews.apps.ReviewsConfig", # reviews app의 class 추가.
     "rest_framework",
-    "rest_framework.authtoken"
+    "rest_framework.authtoken",
+    "rest_framework_simplejwt",
 ]
 
 INSTALLED_APPS = DJANGO_SYSTEM_APPS + CUSTOM_USER_APPS
@@ -136,6 +138,39 @@ AUTH_USER_MODEL = "users.User"
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'config.authentication.JWTAuthentication',  # custom JWT 인증 클래스 사용
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication'
     ],
+}
+
+SIMPLE_JWT = {
+    # 자주 사용하는 JWT 인증 설정
+    # 액세스 토큰의 유효 기간을 60분으로 설정한다.
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    # 리프레시 토큰의 유효 기간을 14일로 설정한다.
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=14),
+    # JWT를 서명하는 데 사용할 키로 Django의 SECRET_KEY를 사용한다.
+    'SIGNING_KEY': SECRET_KEY,
+    # JWT에 사용할 서명 알고리즘으로 HS256을 사용한다.
+    'ALGORITHM': 'HS256',
+    # 인증 헤더의 타입으로 'Bearer'를 사용한다.
+    # Authorization: Bearer <token>
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    
+    # 기타 JWT 인증 설정값 예시
+    # # 리프레시 토큰을 갱신할 때마다 새 토큰을 생성하지 않도록 설정한다.
+    # 'ROTATE_REFRESH_TOKENS': False,  
+    # # 토큰을 갱신한 후 이전 토큰을 블랙리스트에 추가한다.
+    # 'BLACKLIST_AFTER_ROTATION': True,
+    # # JWT 검증에 사용할 키입니다. HS256 알고리즘에서는 None으로 설정된다.
+    # 'VERIFYING_KEY': None,  
+    # # 토큰에 포함될 사용자 식별자 필드로 'id'를 사용한다.
+    # 'USER_ID_FIELD': 'id',  
+    # # 토큰 클레임에서 사용자 식별자에 해당하는 키로 'user_id'를 사용한다.
+    # 'USER_ID_CLAIM': 'user_id',  
+    # # 사용할 토큰 클래스로 AccessToken을 사용한다.
+    # 'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),  
 }
