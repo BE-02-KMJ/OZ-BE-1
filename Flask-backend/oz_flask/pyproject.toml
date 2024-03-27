@@ -8,8 +8,29 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 flask = "^3.0.2"
+black = "^24.3.0"
+isort = "^5.13.2"
+mypy = "^1.9.0"
+pymysql = "^1.1.0"
+types-pymysql = "^1.1.0.1"
+cryptography = "^42.0.5"
+pytest = "^8.1.1"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+line-length = 120
+
+
+[tool.isort]
+profile = "black"
+
+
+
+[tool.mypy]
+python_version = 3.11
+strict = true
