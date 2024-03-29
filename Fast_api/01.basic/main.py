@@ -1,6 +1,5 @@
 import uvicorn
 from fastapi import FastAPI
-
 from items import router as items_router  # as는 추후 다른 model에서의 router와 비교하기 위해.
 from users import router as users_router
 

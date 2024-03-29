@@ -1,20 +1,28 @@
-from pydantic import BaseModel
-from typing import Optional, List
+# models.py - DB table column 정의
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
+from database import Base
 
-class Book(BaseModel):
-    id: int
-    title: str
-    author: str
-    description: Optional[str] = None
 
-# 따로 Create Book class 생성 필요 (data validation)
-class CreateBook(BaseModel):
-    title: str
-    author: str
-    description: Optional[str] = None
+# User(table)
+class User(Base):
+    __tablename__ = "users"
 
-class SearchBook(BaseModel):
-    results: Optional[Book]
+    id = Column(Integer, primary_key=True, index=True)
+    email = Column(String, unique=True)
+    hashed_password = Column()
 
-class SearchBookList(BaseModel):
-    results: List[Book]
+    item = relationship("Item", back_populates='owner')
+
+
+# Item(table)
+class Item(Base):
+    __tablename__ = "items"
+
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String)
+    description = Column(String)
+    owner_id = Column(Integer, ForeignKey('users.id'))
+    
+    owner = relationship("User", back_populates='item')
+    
