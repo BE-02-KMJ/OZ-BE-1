@@ -12,7 +12,7 @@ class User(Base):
     email = Column(String, unique=True)
     hashed_password = Column()
 
-    item = relationship("Item", back_populates='owner')
+    items = relationship("Item", back_populates="owner")
 
 
 # Item(table)
@@ -22,7 +22,6 @@ class Item(Base):
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String)
     description = Column(String)
-    owner_id = Column(Integer, ForeignKey('users.id'))
-    
-    owner = relationship("User", back_populates='item')
-    
+    owner_id = Column(Integer, ForeignKey("users.id"))
+
+    owner = relationship("User", back_populates="items")
