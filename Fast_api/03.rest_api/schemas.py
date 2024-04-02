@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
 
 # schemas/item.py
 # schemas/user.py
@@ -11,12 +11,15 @@ class ItemBase(BaseModel):
     title: str
     description: str
 
+
 class ItemCreate(ItemBase):
     pass
 
+
 class ItemUpdate(ItemBase):
-    title: str | None = None
-    description: str | None = None
+    title: Optional[str] = None
+    description: Optional[str] = None
+
 
 class Item(BaseModel):
     id: int
@@ -46,5 +49,5 @@ class UserCreate(UserBase):
 
 
 class UserUpdate(UserBase):
-    email: str | None = None
+    email: str | None = None  # 위에 Optional과 동일한 기능.
     password: str | None = None
